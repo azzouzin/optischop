@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DarkThemeColors
-{
+class DarkThemeColors {
   //dark swatch
-  static const Color primaryColor = Color(0xFF40DF9F);
-  static const Color accentColor = Color(0xFFD9EDE1);
+  static const Color primaryColor = Color(0xFF3D9751);
+  static const Color accentColor = Color(0xFF182470);
 
   //Appbar
   static const Color appbarColor = Colors.black;
@@ -29,7 +28,7 @@ class DarkThemeColors
   static const Color bodyTextColor = Color(0xFF96A7AF);
   static const Color displayTextColor = Colors.white;
   static const Color bodySmallTextColor = Color(0xFF96A7AF);
-  static const Color hintTextColor =  Color(0xff686868);
+  static const Color hintTextColor = Color(0xff686868);
 
   //chip
   static const Color chipBackground = primaryColor;

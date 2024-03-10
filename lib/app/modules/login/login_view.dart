@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/config/theme/dark_theme_colors.dart';
-import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
+import 'package:getx_skeleton/app/components/custom_button.dart';
+import 'package:getx_skeleton/config/theme/my_spaces.dart';
 
+import '../../components/custom_textfield.dart';
 import './login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -16,62 +17,63 @@ class LoginView extends GetView<LoginController> {
         builder: (controller) {
           return Padding(
             padding: EdgeInsets.all(16.0.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  "Login IamPack",
-                  style: Get.textTheme.titleLarge,
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: 770.h,
+                child: Column(
+                  //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    verticalSpaceSmall,
+                    Center(
+                        child: SizedBox(
+                            width: 250.w,
+                            height: 250.w,
+                            child: Image.asset("assets/images/loginbg.png"))),
+                    verticalSpaceLarge,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 0.w),
+                      child: Column(
+                        children: [
+                          CustomTextField(
+                            iconData: Icons.email,
+                            obscureText: false,
+                            controller: controller.phoneController,
+                            hint: "05 62 41 39 35",
+                            label: "Phone Number",
+                            textInputType: TextInputType.phone,
+                            phoneValidation: controller.phoneValidation,
+                            onChanged: controller.validatePhone,
+                          ),
+                          verticalSpaceMedium,
+                          CustomTextField(
+                            obscureText: true,
+                            iconData: Icons.lock_open,
+                            controller: controller.passwordController,
+                            hint: "**********",
+                            label: "Password",
+                            textInputType: TextInputType.text,
+                            // phoneValidation: controller.phoneValidation,
+                            // onChanged: controller.validatePhone,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    CustomButton(
+                      text: "Login ",
+                      onPressed: () {
+                        controller.login();
+                      },
+                      hasShadow: false,
+                    )
+                  ],
                 ),
-                // CustomTextField(controller: ),
-                TextField(),
-              ],
+              ),
             ),
           );
         },
       ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  CustomTextField({
-    super.key,
-    required this.controller,
-    required this.hint,
-    required this.label,
-    required this.textInputType,
-  });
-  String label;
-  String hint;
-  TextEditingController controller;
-  TextInputType textInputType;
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      keyboardType: textInputType,
-      style: TextStyle(fontSize: 15, color: DarkThemeColors.primaryColor),
-      decoration: InputDecoration(
-          label: Text(
-            label,
-            style: TextStyle(fontSize: 13, color: DarkThemeColors.primaryColor),
-          ),
-          hintText: hint,
-          hintStyle:
-              TextStyle(fontSize: 13, color: DarkThemeColors.accentColor),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
-              borderSide: BorderSide(
-                  width: 1,
-                  color: LightThemeColors.primaryColor.withOpacity(0.5))),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
-              borderSide:
-                  BorderSide(width: 2, color: LightThemeColors.primaryColor))),
     );
   }
 }

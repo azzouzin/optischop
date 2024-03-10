@@ -10,7 +10,7 @@ class AuthServices {
     if (user != null) {
       Logger().i(user.email);
     } else {
-      Logger().w("FireBase USer = NULL");
+      Logger().w("FireBase User = NULL");
     }
     return user;
   }
@@ -46,10 +46,13 @@ class AuthServices {
         .set(appUser.toMap());
   }
 
-  Future<UserModel?> signin(String email, String password) async {
+  Future<UserModel> signin(String email, String password) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email + "@gmail.com",
+        password: password,
+      );
 
       return await fetchUserData(userCredential.user!.uid);
     } on FirebaseAuthException catch (e) {
@@ -75,29 +78,23 @@ class AuthServices {
     }
   }
 
-  Future<UserModel?> fetchUserData(String userId) async {
+  Future<UserModel> fetchUserData(String userId) async {
     Logger().i(userId);
 
     return await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userId)
-            .get()
-            .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        UserModel userData =
-            UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
-        // Use the fetched user data here
-        print('User data: $userData');
-        return userData;
-      } else {
-        Logger().e('User document does not exist');
-        return null;
-      }
-    }) /*.catchError((error) {
+        .collection('users')
+        .doc(userId)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      UserModel userData =
+          UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+      // Use the fetched user data here
+      print('User data: $userData');
+      return userData;
+    }).catchError((error) {
       Logger().e('Error fetching user data: $error');
-      return null;
-    })*/
-        ;
+      throw error;
+    });
   }
 }
 /*.catchError((error) {
