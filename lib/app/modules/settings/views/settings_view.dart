@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/screen_title.dart';
@@ -9,8 +10,8 @@ import '../controllers/settings_controller.dart';
 import 'widgets/settings_item.dart';
 
 class SettingsView extends GetView<SettingsController> {
-  const SettingsView({Key? key}) : super(key: key);
-  
+  SettingsView({Key? key}) : super(key: key);
+  final LoginController loginController = Get.find();
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
@@ -25,47 +26,44 @@ class SettingsView extends GetView<SettingsController> {
               dividerEndIndent: 230,
             ),
             20.verticalSpace,
-            Text(
-              'Account',
-              style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.normal,
-              )
-            ),
+            Text('Account',
+                style: theme.textTheme.displayMedium?.copyWith(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.normal,
+                )),
             20.verticalSpace,
-            const SettingsItem(
+            SettingsItem(
               title: 'Mike Tyson',
               icon: Constants.userIcon,
               isAccount: true,
             ),
             30.verticalSpace,
-            Text(
-              'Settings',
-              style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.normal,
-              )
-            ),
+            Text('Settings',
+                style: theme.textTheme.displayMedium?.copyWith(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.normal,
+                )),
             20.verticalSpace,
-            const SettingsItem(
+            SettingsItem(
               title: 'Dark Mode',
               icon: Constants.themeIcon,
               isDark: true,
             ),
             25.verticalSpace,
-            const SettingsItem(
+            SettingsItem(
               title: 'Language',
               icon: Constants.languageIcon,
             ),
             25.verticalSpace,
-            const SettingsItem(
+            SettingsItem(
               title: 'Help',
               icon: Constants.helpIcon,
             ),
             25.verticalSpace,
-            const SettingsItem(
+            SettingsItem(
               title: 'Sign Out',
               icon: Constants.logoutIcon,
+              onTap: loginController.logout,
             ),
             20.verticalSpace,
           ],

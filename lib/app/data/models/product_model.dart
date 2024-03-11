@@ -1,16 +1,17 @@
 class ProductModel {
   int? id;
-  String? image;
+  List<String>? images;
   String? name;
   int? quantity;
   double? price;
+  double? promoPrice;
   double? rating;
   String? reviews;
   String? size;
   bool? isFavorite;
   ProductModel({
     this.id,
-    this.image,
+    this.images,
     this.name,
     this.quantity,
     this.price,

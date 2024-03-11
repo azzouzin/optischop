@@ -74,7 +74,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                     right: controller.product.id == 2 ? 0 : 30.w,
                     bottom: -350.h,
                     child: Image.asset(
-                      controller.product.image!,
+                      controller.product.images!.first,
                       height: 700.h,
                     ).animate().slideX(
                       duration: const Duration(milliseconds: 300),

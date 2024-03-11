@@ -47,18 +47,7 @@ class LoginController extends GetxController {
     }
   }
 
-  @override
-  void onReady() async {
-    super.onReady();
-    // user == null ? Get.offNamed(Routes.Login) : Get.offNamed(Routes.BASE);
-    user = _authServices.checkCurrentUser();
-    if (user == null) {
-      Get.offNamed(Routes.Login);
-    } else {
-      appUser = await _authServices.fetchUserData(user!.uid);
-      Logger().i("User Alerady Logged in");
-
-      Get.offNamed(Routes.BASE);
-    }
+  void logout() {
+    _authServices.signout().then((value) => Get.toNamed(Routes.Login));
   }
 }

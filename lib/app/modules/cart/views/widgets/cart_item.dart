@@ -35,7 +35,7 @@ class CartItem extends GetView<CartController> {
                   left: 15.w,
                   bottom: -150.h,
                   child: Image.asset(
-                    product.image!,
+                    product.images!.first,
                     height: 250.h,
                   ),
                 ),

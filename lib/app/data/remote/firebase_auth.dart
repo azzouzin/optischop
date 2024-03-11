@@ -16,7 +16,7 @@ class AuthServices {
   }
 
   // SignUp with password and gmail
-  Future<UserCredential> signup(UserModel appUser) async {
+  /* Future<UserCredential> signup(UserModel appUser) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
@@ -33,7 +33,7 @@ class AuthServices {
       rethrow; // Rethrow the exception to be handled by your app
     }
   }
-
+*/
 // Register User Info in database after signup
   Future registerUserInfo(
       UserCredential userCredential, UserModel appUser) async {

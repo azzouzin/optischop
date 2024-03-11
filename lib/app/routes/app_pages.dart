@@ -64,7 +64,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.SETTINGS,
-      page: () => const SettingsView(),
+      page: () => SettingsView(),
       binding: SettingsBinding(),
     ),
     GetPage(
