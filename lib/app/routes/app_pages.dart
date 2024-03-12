@@ -69,7 +69,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.PRODUCT_DETAILS,
-      page: () => const ProductDetailsView(),
+      page: () => ProductDetailsView(),
       binding: ProductDetailsBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 250),

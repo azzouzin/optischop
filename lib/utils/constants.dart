@@ -1,5 +1,4 @@
 class Constants {
-
   // assets images
   static const logo = 'assets/images/app_icon.png';
 
@@ -23,12 +22,11 @@ class Constants {
   static const helpIcon = 'assets/vectors/help.svg';
   static const logoutIcon = 'assets/vectors/logout.svg';
 
-  static const product1 = 'assets/images/product1.png';
+  static const product1 = 'assets/images/product1.jpg';
   static const product2 = 'assets/images/product2.png';
   static const product3 = 'assets/images/product3.png';
   static const product4 = 'assets/images/product4.png';
   static const product5 = 'assets/images/product5.png';
 
   static const noData = 'assets/images/no_data.png';
-
 }

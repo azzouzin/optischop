@@ -16,8 +16,10 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+
     return GestureDetector(
-      onTap: () => Get.toNamed(Routes.PRODUCT_DETAILS, arguments: product),
+      onTap: () =>
+          Get.toNamed(Routes.PRODUCT_DETAILS, arguments: {"product": product}),
       child: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,26 +70,76 @@ class ProductItem extends StatelessWidget {
               ],
             ),
             10.verticalSpace,
-            Text(product.name!, style: theme.textTheme.bodyMedium)
-                .animate()
-                .fade()
-                .slideY(
+            Row(
+              children: [
+                Text(product.name!,
+                        style: theme.textTheme.bodyMedium!
+                            .copyWith(fontWeight: FontWeight.w600))
+                    .animate()
+                    .fade()
+                    .slideY(
+                      duration: const Duration(milliseconds: 200),
+                      begin: 1,
+                      curve: Curves.easeInSine,
+                    ),
+                Spacer(),
+                Text(product.embalage ?? "", style: theme.textTheme.bodyMedium)
+                    .animate()
+                    .fade()
+                    .slideY(
+                      duration: const Duration(milliseconds: 200),
+                      begin: 1,
+                      curve: Curves.easeInSine,
+                    ),
+              ],
+            ),
+            5.verticalSpace,
+            product.promoPrice != null ? promoPrice(theme) : normalPrice(theme),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget promoPrice(ThemeData theme) {
+    return Row(
+      children: [
+        Text('DZ ${product.promoPrice}', style: theme.textTheme.displaySmall)
+            .animate()
+            .fade()
+            .slideY(
+              duration: const Duration(milliseconds: 200),
+              begin: 2,
+              curve: Curves.easeInSine,
+            ),
+        //  Spacer(),
+        product.promoPrice == null
+            ? Container()
+            : Text(
+                ' DZ ${product.price.toString()}',
+                style: theme.textTheme.bodyMedium!
+                    .copyWith(decoration: TextDecoration.lineThrough),
+              ).animate().fade().slideY(
                   duration: const Duration(milliseconds: 200),
                   begin: 1,
                   curve: Curves.easeInSine,
                 ),
-            5.verticalSpace,
-            Text('\$${product.price}', style: theme.textTheme.displaySmall)
-                .animate()
-                .fade()
-                .slideY(
-                  duration: const Duration(milliseconds: 200),
-                  begin: 2,
-                  curve: Curves.easeInSine,
-                ),
-          ],
-        ),
-      ),
+      ],
+    );
+  }
+
+  Widget normalPrice(ThemeData theme) {
+    return Row(
+      children: [
+        Text('DZ ${product.price}', style: theme.textTheme.displaySmall)
+            .animate()
+            .fade()
+            .slideY(
+              duration: const Duration(milliseconds: 200),
+              begin: 2,
+              curve: Curves.easeInSine,
+            ),
+      ],
     );
   }
 }

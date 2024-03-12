@@ -7,10 +7,21 @@ class DummyHelper {
   static List<ProductModel> products = [
     ProductModel(
       id: 1,
-      images: [Constants.product1],
-      name: 'The Basic Tee',
+
+      images: [
+        Constants.product1,
+        Constants.product2,
+        Constants.product2,
+        Constants.product2,
+      ],
+      name: 'Goubllet',
+      embalage: "Carton",
+      unit: "Paqet",
+      // unitPrice: 2000,
+      qtePerEmbalage: 200,
       quantity: 0,
-      price: 25.99,
+      price: 29000,
+      promoPrice: 2500,
       rating: 4.5,
       reviews: '1.2k reviews',
       size: 'M',
@@ -18,7 +29,9 @@ class DummyHelper {
     ),
     ProductModel(
         id: 2,
-        images: [Constants.product2],
+        images: [
+          Constants.product2,
+        ],
         name: 'The Statement Skirt',
         quantity: 0,
         price: 79.99,

@@ -1,26 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/dummy_helper.dart';
 import '../../../data/models/product_model.dart';
-import '../../base/controllers/base_controller.dart';
 import '../../cart/controllers/cart_controller.dart';
 
 class ProductDetailsController extends GetxController {
-
-  // get product details from arguments
-  ProductModel product = Get.arguments;
-
   // for the product size
   var selectedSize = 'M';
 
-  /// when the user press on the favorite button
-  onFavoriteButtonPressed() {
-    Get.find<BaseController>().onFavoriteButtonPressed(productId: product.id!);
-    update(['FavoriteButton']);
-  }
+  TextEditingController qtyController = TextEditingController();
 
   /// when the user press on add to cart button
-  onAddToCartPressed() {
+  onAddToCartPressed(ProductModel product) {
     var mProduct = DummyHelper.products.firstWhere((p) => p.id == product.id);
     mProduct.quantity = mProduct.quantity! + 1;
     mProduct.size = selectedSize;
@@ -29,10 +21,11 @@ class ProductDetailsController extends GetxController {
   }
 
   /// change the selected size
-  changeSelectedSize(String size) {
-    if (size == selectedSize) return;
-    selectedSize = size;
-    update(['Size']);
+  changeQty(int addedQte) {
+    qtyController.text =
+        (int.parse(qtyController.text.isEmpty ? "0" : qtyController.text) +
+                addedQte)
+            .toString();
+    update();
   }
-
 }

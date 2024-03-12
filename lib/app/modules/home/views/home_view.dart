@@ -16,11 +16,20 @@ class HomeView extends GetView<HomeController> {
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: ListView(
           children: [
-            30.verticalSpace,
-            const ScreenTitle(
-              title: 'Home',
+            15.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const ScreenTitle(
+                  title: 'Home',
+                ),
+                SizedBox(
+                    width: 60,
+                    child: Image.asset("assets/images/app_icon.png")),
+              ],
             ),
-            20.verticalSpace,
+            10.verticalSpace,
             GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
