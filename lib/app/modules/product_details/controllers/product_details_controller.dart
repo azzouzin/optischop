@@ -1,3 +1,5 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,8 +24,9 @@ class ProductDetailsController extends GetxController {
 
   /// change the selected size
   changeQty(int addedQte) {
-    qtyController.text =
-        (int.parse(qtyController.text.isEmpty ? "0" : qtyController.text) +
+    qtyController.text = addedQte == -1 && qtyController.text == "0"
+        ? "0"
+        : (int.parse(qtyController.text.isEmpty ? "0" : qtyController.text) +
                 addedQte)
             .toString();
     update();
