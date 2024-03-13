@@ -15,7 +15,6 @@ class ProductDetailsController extends GetxController {
   onAddToCartPressed(ProductModel product) {
     var mProduct = DummyHelper.products.firstWhere((p) => p.id == product.id);
     mProduct.quantity = mProduct.quantity! + 1;
-    mProduct.size = selectedSize;
     Get.find<CartController>().getCartProducts();
     Get.back();
   }

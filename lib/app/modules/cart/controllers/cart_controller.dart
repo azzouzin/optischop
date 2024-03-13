@@ -1,18 +1,20 @@
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/data/models/command_model.dart';
+import 'package:getx_skeleton/app/modules/login/login_controller.dart';
+import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
 
 import '../../../../utils/dummy_helper.dart';
 import '../../../components/custom_snackbar.dart';
 import '../../../data/models/product_model.dart';
-import '../../base/controllers/base_controller.dart';
 
 class CartController extends GetxController {
-
   // to hold the products in cart
   List<ProductModel> products = [];
-
+  LoginController loginController = Get.put(LoginController());
+  SplashController splashController = Get.put(SplashController());
   // to hold the total price of the cart products
   var total = 0.0;
-  
+
   @override
   void onInit() {
     getCartProducts();
@@ -21,11 +23,23 @@ class CartController extends GetxController {
 
   /// when the user press on purchase now button
   onPurchaseNowPressed() {
-    Get.find<BaseController>().changeScreen(0);
-    CustomSnackBar.showCustomSnackBar(
-      title: 'Purchased',
-      message: 'Order placed with success'
+    // Get.find<BaseController>().changeScreen(0);
+    List<CommandProductsModel> commandProducts = [];
+    for (var element in products) {
+      commandProducts.add(CommandProductsModel(
+          id: element.id.toString(),
+          qte: element.quantity!,
+          price: element.promoPrice ?? element.price!));
+    }
+    CommandModel commandModel = CommandModel(
+      clientId: loginController.appUser!.id,
+      dateTime: DateTime.now(),
+      products: commandProducts,
+      status: "New",
     );
+    print(commandModel.toMap());
+    CustomSnackBar.showCustomSnackBar(
+        title: 'Purchased', message: 'Order placed with success');
   }
 
   /// when the user press on increase button
@@ -57,8 +71,8 @@ class CartController extends GetxController {
   getCartProducts() {
     products = DummyHelper.products.where((p) => p.quantity! > 0).toList();
     // calculate the total price
-    total = products.fold<double>(0, (p, c) => p + c.price! * c.quantity!);
+    total = products.fold<double>(
+        0, (p, c) => p + (c.promoPrice ?? c.price)! * c.quantity!);
     update();
   }
-  
 }

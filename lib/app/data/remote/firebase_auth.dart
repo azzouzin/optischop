@@ -89,7 +89,7 @@ class AuthServices {
       UserModel userData =
           UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
       // Use the fetched user data here
-      print('User data: $userData');
+      print('User data: ${userData.id}');
       return userData;
     }).catchError((error) {
       Logger().e('Error fetching user data: $error');

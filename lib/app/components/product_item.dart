@@ -48,7 +48,7 @@ class ProductItem extends StatelessWidget {
                         ),
                   ),
                 ),
-                Positioned(
+               /* Positioned(
                   left: 15.w,
                   bottom: 20.h,
                   child: GetBuilder<BaseController>(
@@ -70,7 +70,7 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                 ).animate().fade(),
-              ],
+              */],
             ),
             10.verticalSpace,
             Row(

@@ -53,11 +53,15 @@ class CartItem extends GetView<CartController> {
                 overflow: TextOverflow.ellipsis,
               ),
               5.verticalSpace,
-              Text('Size: ${product.size}', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 16.sp)),
+              Text('Emballage: ${product.embalage ?? ""}',
+                  style: theme.textTheme.bodyMedium?.copyWith(fontSize: 16.sp)),
               5.verticalSpace,
-              Text('\$${product.price}', style: theme.textTheme.displayLarge?.copyWith(
-                fontSize: 18.sp,
-              ),),
+              Text(
+                '${product.promoPrice == null ? product.price : product.promoPrice}DZD',
+                style: theme.textTheme.displayLarge?.copyWith(
+                  fontSize: 18.sp,
+                ),
+              ),
               10.verticalSpace,
               GetBuilder<CartController>(
                 id: 'ProductQuantity',
@@ -69,7 +73,8 @@ class CartItem extends GetView<CartController> {
                       child: SvgPicture.asset(Constants.decreaseIcon),
                     ),
                     10.horizontalSpace,
-                    Text('${product.quantity}', style: theme.textTheme.displaySmall),
+                    Text('${product.quantity}',
+                        style: theme.textTheme.displaySmall),
                     10.horizontalSpace,
                     GestureDetector(
                       onTap: () => controller.onDecreasePressed(product.id!),

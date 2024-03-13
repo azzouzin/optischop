@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 import '../../../../utils/dummy_helper.dart';
-import '../../favorites/controllers/favorites_controller.dart';
 
 class BaseController extends GetxController {
 
@@ -15,7 +14,7 @@ class BaseController extends GetxController {
   }
 
   /// when the user press on the favorite button in the product
-  onFavoriteButtonPressed({required int productId}) {
+ /* onFavoriteButtonPressed({required int productId}) {
     var product = DummyHelper.products.firstWhere((product) => product.id == productId);
     if (product.isFavorite!) {
       // remove product from favorites
@@ -29,4 +28,5 @@ class BaseController extends GetxController {
     update(['FavoriteButton']);
   }
 
+*/
 }

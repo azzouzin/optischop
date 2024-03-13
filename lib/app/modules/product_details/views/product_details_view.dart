@@ -291,7 +291,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                       radius: 12.r,
                       verticalPadding: 12.h,
                       hasShadow: true,
-                      backgroundColor: LightThemeColors.accentColor,
+                      backgroundColor: LightThemeColors.primaryColor,
                       shadowColor: theme.primaryColor,
                       shadowOpacity: 0.3,
                       shadowBlurRadius: 4,

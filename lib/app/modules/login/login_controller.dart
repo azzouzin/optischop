@@ -25,7 +25,6 @@ class LoginController extends GetxController {
 
   User? user;
   UserModel? appUser;
-
   String? phoneValidation;
 
   void validatePhone(String val) {
@@ -49,5 +48,11 @@ class LoginController extends GetxController {
 
   void logout() {
     _authServices.signout().then((value) => Get.toNamed(Routes.Login));
+  }
+
+  void updateAppUserData(UserModel myappUser) {
+    appUser = myappUser;
+    print(appUser!.id);
+    update();
   }
 }

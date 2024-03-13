@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 class ProductModel {
   int? id;
   List<String>? images;
@@ -5,14 +8,10 @@ class ProductModel {
   int? quantity;
   double? price;
   double? promoPrice;
-  double? rating;
-  String? reviews;
-  String? size;
   // double? unitPrice;
   int? qtePerEmbalage;
   String? embalage;
   String? unit;
-  bool? isFavorite;
   ProductModel(
       {this.id,
       this.images,
@@ -21,11 +20,44 @@ class ProductModel {
       this.price,
       // this.unitPrice,
       this.qtePerEmbalage,
-      this.rating,
-      this.reviews,
-      this.size,
+
       this.embalage,
       this.unit,
-      this.isFavorite,
       this.promoPrice});
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'images': images,
+      'name': name,
+      'quantity': quantity,
+      'price': price,
+      'promoPrice': promoPrice,
+      'qtePerEmbalage': qtePerEmbalage,
+      'embalage': embalage,
+      'unit': unit,
+    };
+  }
+
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
+      id: map['id'] != null ? map['id'] as int : null,
+      images: map['images'] != null
+          ? List<String>.from((map['images'] as List<String>))
+          : null,
+      name: map['name'] != null ? map['name'] as String : null,
+      quantity: map['quantity'] != null ? map['quantity'] as int : null,
+      price: map['price'] != null ? map['price'] as double : null,
+      promoPrice: map['promoPrice'],
+      qtePerEmbalage:
+          map['qtePerEmbalage'] != null ? map['qtePerEmbalage'] as int : null,
+      embalage: map['embalage'] != null ? map['embalage'] as String : null,
+      unit: map['unit'] != null ? map['unit'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ProductModel.fromJson(String source) =>
+      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

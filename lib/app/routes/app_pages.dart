@@ -6,8 +6,6 @@ import '../modules/base/bindings/base_binding.dart';
 import '../modules/base/views/base_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
-import '../modules/favorites/bindings/favorites_binding.dart';
-import '../modules/favorites/views/favorites_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/notifications/bindings/notifications_binding.dart';
@@ -47,11 +45,11 @@ class AppPages {
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
-    GetPage(
+    /* GetPage(
       name: Routes.FAVORITES,
       page: () => const FavoritesView(),
       binding: FavoritesBinding(),
-    ),
+    ),*/
     GetPage(
       name: Routes.CART,
       page: () => const CartView(),
