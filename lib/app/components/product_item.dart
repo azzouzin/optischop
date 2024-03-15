@@ -36,19 +36,17 @@ class ProductItem extends StatelessWidget {
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(25.r),
-                  child: Positioned.fill(
-                    child: Image.asset(
-                      product.images!.first,
-                      height: 200.h,
-                      fit: BoxFit.cover,
-                    ).animate().slideX(
-                          duration: const Duration(milliseconds: 200),
-                          begin: 1,
-                          curve: Curves.easeInSine,
-                        ),
-                  ),
+                  child: Image.asset(
+                    product.images!.first,
+                    height: 200.h,
+                    fit: BoxFit.cover,
+                  ).animate().slideX(
+                        duration: const Duration(milliseconds: 200),
+                        begin: 1,
+                        curve: Curves.easeInSine,
+                      ),
                 ),
-               /* Positioned(
+                /* Positioned(
                   left: 15.w,
                   bottom: 20.h,
                   child: GetBuilder<BaseController>(
@@ -70,7 +68,8 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                 ).animate().fade(),
-              */],
+              */
+              ],
             ),
             10.verticalSpace,
             Row(

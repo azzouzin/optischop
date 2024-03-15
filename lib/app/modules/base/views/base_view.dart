@@ -24,7 +24,7 @@ class BaseView extends GetView<BaseController> {
           child: IndexedStack(
             index: controller.currentIndex,
             children: [
-              const HomeView(),
+              HomeView(),
               //  const FavoritesView(),
               const CartView(),
               const NotificationsView(),
@@ -95,7 +95,13 @@ class BaseView extends GetView<BaseController> {
     return BottomNavigationBarItem(
       label: label,
       icon: SvgPicture.asset(icon, color: Get.theme.iconTheme.color),
-      activeIcon: SvgPicture.asset(icon, color: Get.theme.primaryColor),
+      activeIcon: SizedBox(
+          width: 20.w,
+          height: 20.w,
+          child: SvgPicture.asset(
+            icon,
+            color: Get.theme.primaryColor,
+          )),
     );
   }
 }

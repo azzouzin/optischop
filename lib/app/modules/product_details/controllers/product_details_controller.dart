@@ -14,7 +14,7 @@ class ProductDetailsController extends GetxController {
   /// when the user press on add to cart button
   onAddToCartPressed(ProductModel product) {
     var mProduct = DummyHelper.products.firstWhere((p) => p.id == product.id);
-    mProduct.quantity = mProduct.quantity! + 1;
+    mProduct.quantity = int.parse(qtyController.text);
     Get.find<CartController>().getCartProducts();
     Get.back();
   }

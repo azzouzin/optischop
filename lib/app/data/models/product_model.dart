@@ -12,15 +12,16 @@ class ProductModel {
   int? qtePerEmbalage;
   String? embalage;
   String? unit;
+  String? type;
   ProductModel(
       {this.id,
       this.images,
       this.name,
       this.quantity,
       this.price,
+      this.type,
       // this.unitPrice,
       this.qtePerEmbalage,
-
       this.embalage,
       this.unit,
       this.promoPrice});
@@ -30,6 +31,7 @@ class ProductModel {
       'id': id,
       'images': images,
       'name': name,
+      'type': type,
       'quantity': quantity,
       'price': price,
       'promoPrice': promoPrice,
@@ -53,6 +55,7 @@ class ProductModel {
           map['qtePerEmbalage'] != null ? map['qtePerEmbalage'] as int : null,
       embalage: map['embalage'] != null ? map['embalage'] as String : null,
       unit: map['unit'] != null ? map['unit'] as String : null,
+      type: map['type'] as String?,
     );
   }
 

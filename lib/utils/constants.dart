@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Constants {
   // assets images
   static const logo = 'assets/images/app_icon.png';
@@ -6,6 +8,7 @@ class Constants {
   static const favoritesIcon = 'assets/vectors/favorites.svg';
   static const cartIcon = 'assets/vectors/cart.svg';
   static const notificationsIcon = 'assets/vectors/notifications.svg';
+  static const paymentIcon = 'assets/vectors/payment.svg';
   static const settingsIcon = 'assets/vectors/settings.svg';
 
   static const favFilledIcon = 'assets/vectors/fav_filled.svg';
@@ -29,4 +32,9 @@ class Constants {
   static const product5 = 'assets/images/product5.png';
 
   static const noData = 'assets/images/no_data.png';
+
+  // Firebase Collections Names
+  static const productsCollection = 'products';
+  static const categoryCollection = 'categories';
+  static const usersCollection = 'users';
 }

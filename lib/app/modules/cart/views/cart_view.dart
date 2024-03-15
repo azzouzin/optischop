@@ -31,19 +31,21 @@ class CartView extends GetView<CartController> {
               ),
               20.verticalSpace,
               controller.products.isEmpty
-                ? const NoData(text: 'No Products in Your Cart Yet!')
-                : ListView.builder(
-                    itemCount: controller.products.length,
-                    itemBuilder: (context, index) => CartItem(
-                      product: controller.products[index],
-                    ).animate().fade().slideX(
-                      duration: const Duration(milliseconds: 300),
-                      begin: -1,
-                      curve: Curves.easeInSine,
+                  ? const NoData(text: 'No Products in Your Cart Yet!')
+                  : ListView.builder(
+                      itemCount: controller.products.length,
+                      itemBuilder: (context, index) => CartItem(
+                        product: controller.products[index],
+                      ).animate().fade().slideX(
+                            duration: const Duration(
+                              milliseconds: 300,
+                            ),
+                            begin: -1,
+                            curve: Curves.easeInSine,
+                          ),
+                      shrinkWrap: true,
+                      primary: false,
                     ),
-                    shrinkWrap: true,
-                    primary: false,
-                  ),
               30.verticalSpace,
               Visibility(
                 visible: controller.products.isNotEmpty,
@@ -61,9 +63,12 @@ class CartView extends GetView<CartController> {
                         children: [
                           SvgPicture.asset(Constants.busIcon),
                           5.verticalSpace,
-                          Text('FREE', style: theme.textTheme.displaySmall?.copyWith(
-                            color: Colors.white,
-                          )),
+                          Text(
+                            'FREE',
+                            style: theme.textTheme.displaySmall?.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -71,22 +76,23 @@ class CartView extends GetView<CartController> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Total:', style: theme.textTheme.bodyLarge?.copyWith(
-                          fontSize: 18.sp,
-                        )),
+                        Text('Total:',
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              fontSize: 18.sp,
+                            )),
                         10.verticalSpace,
                         Text(
                           '\$${controller.total.toStringAsFixed(2)}',
                           style: theme.textTheme.displayLarge?.copyWith(
                             decoration: TextDecoration.underline,
-                            decorationColor: theme.primaryColor.withOpacity(0.5),
+                            decorationColor:
+                                theme.primaryColor.withOpacity(0.5),
                             decorationThickness: 1,
                             color: Colors.transparent,
                             shadows: [
                               Shadow(
-                                color: theme.textTheme.displayLarge!.color!,
-                                offset: const Offset(0, -5)
-                              ),
+                                  color: theme.textTheme.displayLarge!.color!,
+                                  offset: const Offset(0, -5)),
                             ],
                           ),
                         ),
@@ -94,10 +100,10 @@ class CartView extends GetView<CartController> {
                     ),
                   ],
                 ).animate().fade().slideX(
-                  duration: const Duration(milliseconds: 300),
-                  begin: -1,
-                  curve: Curves.easeInSine,
-                ),
+                      duration: const Duration(milliseconds: 300),
+                      begin: -1,
+                      curve: Curves.easeInSine,
+                    ),
               ),
               30.verticalSpace,
               Visibility(
@@ -116,10 +122,10 @@ class CartView extends GetView<CartController> {
                     shadowBlurRadius: 4,
                     shadowSpreadRadius: 0,
                   ).animate().fade().slideY(
-                    duration: const Duration(milliseconds: 300),
-                    begin: 1,
-                    curve: Curves.easeInSine,
-                  ),
+                        duration: const Duration(milliseconds: 300),
+                        begin: 1,
+                        curve: Curves.easeInSine,
+                      ),
                 ),
               ),
               30.verticalSpace,

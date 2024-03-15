@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/data/models/category_model.dart';
+import 'package:getx_skeleton/app/modules/home/views/widgets/category_card.dart';
+import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
+import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
 import '../../../components/product_item.dart';
 import '../../../components/screen_title.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
-
+  HomeView({Key? key}) : super(key: key);
+  SplashController splashController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +33,28 @@ class HomeView extends GetView<HomeController> {
                     child: Image.asset("assets/images/app_icon.png")),
               ],
             ),
-            10.verticalSpace,
+            Text(
+              "Category",
+              style: context.theme.textTheme.displayMedium!
+                  .copyWith(color: LightThemeColors.accentColor),
+            ),
+            15.verticalSpace,
+            SizedBox(
+              height: 30.h,
+              width: Get.width,
+              child: GetBuilder<HomeController>(builder: (context) {
+                return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    //itemCount: 10,
+                    itemCount: splashController.categories.length,
+                    itemBuilder: (context, index) {
+                      return CategoryItem(
+                          categoryModel: splashController.categories[index]);
+                    });
+              }),
+            ),
+            15.verticalSpace,
             GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
