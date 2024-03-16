@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:getx_skeleton/app/data/models/payment_model.dart';
+import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 
 class TicketData extends StatelessWidget {
-  const TicketData({
+  TicketData({
     Key? key,
+    required this.payment,
   }) : super(key: key);
-
+  final Payment payment;
+  LoginController loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,10 +51,10 @@ class TicketData extends StatelessWidget {
             )
           ],
         ),
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(top: 20.0),
           child: Text(
-            '300.000.000 DZ',
+            '${payment.amount} DZ',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20.0,
@@ -61,45 +66,21 @@ class TicketData extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ticketDetailsWidget(
-                  'Nom de', 'Merouani Azzouz', 'Date', '28-08-2022'),
+              ticketDetailsWidget('Nom de', loginController.appUser!.username!,
+                  'Date', payment.dateTime.toString().substring(0, 10)),
               /* Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 52.0),
                 child: ticketDetailsWidget('Flight', '76836A45', 'Gate', '66B'),
               ),*/
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 53.0),
-                child: ticketDetailsWidget(
-                    'Réferance', '+9230 2884 5163', 'Heur', '18:58'),
+                child: ticketDetailsWidget('Réferance', payment.id, 'Heur',
+                    payment.dateTime.toString().substring(10, 16)),
+                // "${payment.dateTime.hour}:${payment.dateTime.minute}"),
               ),
             ],
           ),
         ),
-        /*  Padding(
-          padding: const EdgeInsets.only(top: 80.0, left: 30.0, right: 30.0),
-          child: Container(
-            width: 250.0,
-            height: 60.0,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/barcode.png'),
-                    fit: BoxFit.cover)),
-          ),
-        ),*/
-        /* const Spacer(),
-        Center(
-          child: Padding(
-            padding: EdgeInsets.only(top: 30.0.h),
-            child: const Text(
-              'Réferance : +9230 2884 5163',
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),*/
-        // const SizedBox(height: 30),
-        // const Text('         Developer: instagram.com/DholaSain')
       ],
     );
   }

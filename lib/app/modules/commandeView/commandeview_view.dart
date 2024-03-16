@@ -15,11 +15,11 @@ class CommandeView extends StatelessWidget {
         body: Obx(() => Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                30.verticalSpace,
+                15.verticalSpace,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                   child: const ScreenTitle(
-                    title: 'Payments',
+                    title: 'Commandes',
                     dividerEndIndent: 280,
                   ),
                 ),

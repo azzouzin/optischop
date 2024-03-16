@@ -37,5 +37,6 @@ class Constants {
   static const productsCollection = 'products';
   static const categoryCollection = 'categories';
   static const usersCollection = 'users';
+  static const paymentsCollection = 'payments';
   static const commandesCollection = 'commandes';
 }

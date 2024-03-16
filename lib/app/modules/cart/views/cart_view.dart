@@ -24,7 +24,7 @@ class CartView extends GetView<CartController> {
         child: GetBuilder<CartController>(
           builder: (_) => ListView(
             children: [
-              30.verticalSpace,
+              15.verticalSpace,
               const ScreenTitle(
                 title: 'Cart',
                 dividerEndIndent: 280,

@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class ProductModel {
-  int? id;
+  String? id;
   List<String>? images;
   String? name;
   int? quantity;
@@ -43,7 +43,7 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id'] != null ? map['id'] as int : null,
+      id: map['id'] != null ? map['id'] as String : null,
       images: map['images'] != null
           ? List<String>.from((map['images'] as List<String>))
           : null,

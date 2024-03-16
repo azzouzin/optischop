@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/command_model.dart';
+import 'package:getx_skeleton/app/modules/base/controllers/base_controller.dart';
 import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
 import '../../../../utils/dummy_helper.dart';
@@ -25,7 +26,6 @@ class CartController extends GetxController {
 
   /// when the user press on purchase now button
   onPurchaseNowPressed() {
-    // Get.find<BaseController>().changeScreen(0);
     List<CommandProductsModel> commandProducts = [];
     try {
       placeProductsInCommande(commandProducts);
@@ -42,12 +42,17 @@ class CartController extends GetxController {
       commandeViewController.addcommande(commandModel);
       CustomSnackBar.showCustomSnackBar(
           title: 'Purchased', message: 'Order placed with success');
+      products = [];
+      commandProducts = [];
+      update();
+      Get.find<BaseController>().changeScreen(0);
     } on Exception catch (e) {
       CustomSnackBar.showCustomErrorSnackBar(
           title: 'Error', message: e.toString());
     }
   }
 
+  // A function that takes a list of CommandProductsModel and adds products to it based on the elements in the products list.
   void placeProductsInCommande(List<CommandProductsModel> commandProducts) {
     for (var element in products) {
       commandProducts.add(CommandProductsModel(
@@ -58,7 +63,7 @@ class CartController extends GetxController {
   }
 
   /// when the user press on increase button
-  onIncreasePressed(int productId) {
+  onIncreasePressed(String productId) {
     var product = DummyHelper.products.firstWhere((p) => p.id == productId);
     product.quantity = product.quantity! + 1;
     getCartProducts();
@@ -66,7 +71,7 @@ class CartController extends GetxController {
   }
 
   /// when the user press on decrease button
-  onDecreasePressed(int productId) {
+  onDecreasePressed(String productId) {
     var product = DummyHelper.products.firstWhere((p) => p.id == productId);
     if (product.quantity != 0) {
       product.quantity = product.quantity! - 1;
@@ -76,7 +81,7 @@ class CartController extends GetxController {
   }
 
   /// when the user press on delete icon
-  onDeletePressed(int productId) {
+  onDeletePressed(String productId) {
     var product = DummyHelper.products.firstWhere((p) => p.id == productId);
     product.quantity = 0;
     getCartProducts();

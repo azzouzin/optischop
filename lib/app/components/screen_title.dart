@@ -16,15 +16,23 @@ class ScreenTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title,
-            style: context.theme.textTheme.displayLarge?.copyWith(
-              fontSize: 32.sp,
-            )),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title,
+                style: context.theme.textTheme.displayLarge?.copyWith(
+                  fontSize: 32.sp,
+                )),
+            SizedBox(
+                width: 60, child: Image.asset("assets/images/app_icon.png")),
+          ],
+        ),
         SizedBox(
+            width: Get.width,
             child: Divider(
-          thickness: 3,
-          endIndent: dividerEndIndent ?? 250,
-        )),
+              thickness: 3,
+              endIndent: dividerEndIndent ?? 250,
+            )),
       ],
     );
   }

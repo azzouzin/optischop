@@ -10,6 +10,7 @@ import '../../controllers/settings_controller.dart';
 class SettingsItem extends StatelessWidget {
   final String title;
   final String icon;
+  final String phone;
   final bool isAccount;
   final bool isDark;
   Function()? onTap = () {};
@@ -20,6 +21,7 @@ class SettingsItem extends StatelessWidget {
     this.isAccount = false,
     this.onTap,
     this.isDark = false,
+    this.phone = '',
   }) : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class SettingsItem extends StatelessWidget {
         subtitle: !isAccount
             ? null
             : Text(
-                '+218 92 00 000 00',
+                phone,
                 style: theme.textTheme.displaySmall,
               ),
         leading: CircleAvatar(

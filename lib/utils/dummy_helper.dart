@@ -6,7 +6,7 @@ class DummyHelper {
 
   static List<ProductModel> products = [
     ProductModel(
-      id: 1,
+      id: "1",
 
       images: [
         Constants.product1,
@@ -24,7 +24,7 @@ class DummyHelper {
       promoPrice: 2500,
     ),
     ProductModel(
-        id: 2,
+        id: "2",
         images: [
           Constants.product2,
         ],
@@ -32,26 +32,26 @@ class DummyHelper {
         quantity: 0,
         price: 79.99,),
     ProductModel(
-        id: 3,
+        id:" 3",
         images: [Constants.product3],
         name: 'The Luxe Sweater',
         quantity: 0,
         price: 129.99,
       ),
     ProductModel(
-        id: 4,
+        id: "4",
         images: [Constants.product4],
         name: 'The Statement Top',
         quantity: 0,
         price: 59.99,),
     ProductModel(
-        id: 5,
+        id: "5",
         images: [Constants.product5],
         name: 'The Casual Tank',
         quantity: 0,
         price: 39.99,),
     ProductModel(
-        id: 6,
+        id: "6",
         images: [Constants.product1],
         name: 'The Denim Jean',
         quantity: 0,

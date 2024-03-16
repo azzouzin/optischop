@@ -21,22 +21,10 @@ class HomeView extends GetView<HomeController> {
         child: ListView(
           children: [
             15.verticalSpace,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const ScreenTitle(
-                  title: 'Home',
-                ),
-                SizedBox(
-                    width: 60,
-                    child: Image.asset("assets/images/app_icon.png")),
-              ],
-            ),
+            const ScreenTitle(title: 'Home'),
             Text(
               "Category",
-              style: context.theme.textTheme.displayMedium!
-                  .copyWith(color: LightThemeColors.accentColor),
+              style: context.theme.textTheme.displayMedium!,
             ),
             15.verticalSpace,
             SizedBox(

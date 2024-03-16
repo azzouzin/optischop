@@ -20,7 +20,7 @@ class SettingsView extends GetView<SettingsController> {
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: ListView(
           children: [
-            30.verticalSpace,
+            15.verticalSpace,
             const ScreenTitle(
               title: 'Settings',
               dividerEndIndent: 230,
@@ -33,9 +33,10 @@ class SettingsView extends GetView<SettingsController> {
                 )),
             20.verticalSpace,
             SettingsItem(
-              title: 'Mike Tyson',
+              title: loginController.appUser!.username!,
               icon: Constants.userIcon,
               isAccount: true,
+              phone: loginController.appUser!.phoneNumber!,
             ),
             30.verticalSpace,
             Text('Settings',
