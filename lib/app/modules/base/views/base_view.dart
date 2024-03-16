@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../utils/constants.dart';
+import 'package:icons_plus/icons_plus.dart';
 import '../controllers/base_controller.dart';
 import '../../cart/views/cart_view.dart';
 import '../../home/views/home_view.dart';
@@ -64,7 +64,7 @@ class BaseView extends GetView<BaseController> {
               items: [
                 _mBottomNavItem(
                   label: 'Home',
-                  icon: Constants.homeIcon,
+                  icon: EvaIcons.home,
                 ),
                 /* _mBottomNavItem(
                   label: 'Favorites',
@@ -72,15 +72,15 @@ class BaseView extends GetView<BaseController> {
                 ),*/
                 _mBottomNavItem(
                   label: 'Cart',
-                  icon: Constants.cartIcon,
+                  icon: EvaIcons.shopping_cart,
                 ),
                 _mBottomNavItem(
                   label: 'Notifications',
-                  icon: Constants.notificationsIcon,
+                  icon: Icons.payment_outlined,
                 ),
                 _mBottomNavItem(
                   label: 'Settings',
-                  icon: Constants.settingsIcon,
+                  icon: EvaIcons.settings_2,
                 ),
               ],
               onTap: controller.changeScreen,
@@ -91,17 +91,15 @@ class BaseView extends GetView<BaseController> {
     );
   }
 
-  _mBottomNavItem({required String label, required String icon}) {
+  _mBottomNavItem({required String label, required IconData icon}) {
     return BottomNavigationBarItem(
       label: label,
-      icon: SvgPicture.asset(icon, color: Get.theme.iconTheme.color),
-      activeIcon: SizedBox(
-          width: 20.w,
-          height: 20.w,
-          child: SvgPicture.asset(
-            icon,
-            color: Get.theme.primaryColor,
-          )),
+      icon: Icon(icon, color: Get.theme.iconTheme.color),
+      activeIcon: Icon(
+        icon,
+        color: Get.theme.primaryColor,
+        size: 30.w,
+      ),
     );
   }
 }
