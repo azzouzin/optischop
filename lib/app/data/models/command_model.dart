@@ -1,20 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:getx_skeleton/app/data/models/product_model.dart';
-
 class CommandModel {
   String? id;
   List<CommandProductsModel> products;
   String? clientId;
   DateTime dateTime;
   String status;
+  double prixTotal;
   CommandModel({
     this.id,
     required this.products,
     required this.clientId,
     required this.dateTime,
     required this.status,
+    required this.prixTotal,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,6 +24,7 @@ class CommandModel {
       'clientId': clientId,
       'dateTime': dateTime.millisecondsSinceEpoch,
       'status': status,
+      'prixTotal': prixTotal,
     };
   }
 
@@ -37,6 +38,7 @@ class CommandModel {
       ),
       clientId: map['clientId'] != null ? map['clientId'] as String : null,
       dateTime: DateTime.fromMillisecondsSinceEpoch(map['dateTime'] as int),
+      prixTotal: map['prixTotal'] as double,
       status: map['status'] as String,
     );
   }

@@ -27,22 +27,34 @@ class CartController extends GetxController {
   onPurchaseNowPressed() {
     // Get.find<BaseController>().changeScreen(0);
     List<CommandProductsModel> commandProducts = [];
+    try {
+      placeProductsInCommande(commandProducts);
+      CommandModel commandModel = CommandModel(
+        clientId: loginController.appUser!.id,
+        dateTime: DateTime.now(),
+        products: commandProducts,
+        status: "New",
+        prixTotal: double.parse(
+          total.toStringAsFixed(2),
+        ),
+      );
+      // print(commandModel.toMap());
+      commandeViewController.addcommande(commandModel);
+      CustomSnackBar.showCustomSnackBar(
+          title: 'Purchased', message: 'Order placed with success');
+    } on Exception catch (e) {
+      CustomSnackBar.showCustomErrorSnackBar(
+          title: 'Error', message: e.toString());
+    }
+  }
+
+  void placeProductsInCommande(List<CommandProductsModel> commandProducts) {
     for (var element in products) {
       commandProducts.add(CommandProductsModel(
           id: element.id.toString(),
           qte: element.quantity!,
           price: element.promoPrice ?? element.price!));
     }
-    CommandModel commandModel = CommandModel(
-      clientId: loginController.appUser!.id,
-      dateTime: DateTime.now(),
-      products: commandProducts,
-      status: "New",
-    );
-    print(commandModel.toMap());
-    commandeViewController.addcommande(commandModel);
-    CustomSnackBar.showCustomSnackBar(
-        title: 'Purchased', message: 'Order placed with success');
   }
 
   /// when the user press on increase button

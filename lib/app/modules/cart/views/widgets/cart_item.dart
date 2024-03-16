@@ -27,16 +27,13 @@ class CartItem extends GetView<CartController> {
             child: Stack(
               children: [
                 Container(
+                  color: Colors.white,
                   width: 105.w,
                   height: 125.h,
-                  color: const Color(0xFFEDF1FA),
-                ),
-                Positioned(
-                  left: 15.w,
-                  bottom: -150.h,
                   child: Image.asset(
                     product.images!.first,
-                    height: 250.h,
+                    //  height: 250.h,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],
@@ -47,17 +44,20 @@ class CartItem extends GetView<CartController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               5.verticalSpace,
-              Text(
-                product.name!,
-                style: theme.textTheme.displayMedium,
-                overflow: TextOverflow.ellipsis,
+              SizedBox(
+                width: 150.w,
+                child: Text(
+                  product.name!,
+                  style: theme.textTheme.displayMedium,
+                  overflow: TextOverflow.fade,
+                ),
               ),
               5.verticalSpace,
               Text('Emballage: ${product.embalage ?? ""}',
                   style: theme.textTheme.bodyMedium?.copyWith(fontSize: 16.sp)),
               5.verticalSpace,
               Text(
-                '${product.promoPrice == null ? product.price : product.promoPrice}DZD',
+                '${product.promoPrice ?? product.price}DZD',
                 style: theme.textTheme.displayLarge?.copyWith(
                   fontSize: 18.sp,
                 ),
