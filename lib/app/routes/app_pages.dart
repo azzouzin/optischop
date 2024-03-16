@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/modules/commandeView/commandeview_binding.dart';
+import 'package:getx_skeleton/app/modules/commandeView/commandeview_view.dart';
 import 'package:getx_skeleton/app/modules/login/login_binding.dart';
 import 'package:getx_skeleton/app/modules/login/login_view.dart';
 
@@ -45,11 +47,11 @@ class AppPages {
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
-    /* GetPage(
-      name: Routes.FAVORITES,
-      page: () => const FavoritesView(),
-      binding: FavoritesBinding(),
-    ),*/
+     GetPage(
+      name: Routes.Commandes,
+      page: () =>  CommandeView(),
+      binding: CommandeViewBinding(),
+    ),
     GetPage(
       name: Routes.CART,
       page: () => const CartView(),

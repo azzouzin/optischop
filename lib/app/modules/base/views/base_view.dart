@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/modules/commandeView/commandeview_view.dart';
 
 import 'package:icons_plus/icons_plus.dart';
 import '../controllers/base_controller.dart';
@@ -25,7 +26,7 @@ class BaseView extends GetView<BaseController> {
             index: controller.currentIndex,
             children: [
               HomeView(),
-              //  const FavoritesView(),
+               CommandeView(),
               const CartView(),
               const NotificationsView(),
               SettingsView()
@@ -66,10 +67,10 @@ class BaseView extends GetView<BaseController> {
                   label: 'Home',
                   icon: EvaIcons.home,
                 ),
-                /* _mBottomNavItem(
-                  label: 'Favorites',
-                  icon: Constants.favoritesIcon,
-                ),*/
+                _mBottomNavItem(
+                  label: 'Commandes',
+                  icon: Icons.history,
+                ),
                 _mBottomNavItem(
                   label: 'Cart',
                   icon: EvaIcons.shopping_cart,

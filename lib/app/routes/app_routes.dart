@@ -6,7 +6,7 @@ abstract class Routes {
   static const SPLASH = '/SPLASH';
   static const BASE = '/BASE';
   static const HOME = '/HOME';
-  static const FAVORITES = '/FAVORITES';
+  static const Commandes = '/COMMANDES';
   static const CART = '/CART';
   static const NOTIFICATIONS = '/NOTIFICATIONS';
   static const SETTINGS = '/SETTINGS';

@@ -5,12 +5,15 @@ import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.d
 import '../../../../utils/dummy_helper.dart';
 import '../../../components/custom_snackbar.dart';
 import '../../../data/models/product_model.dart';
+import '../../commandeView/commandeview_controller.dart';
 
 class CartController extends GetxController {
   // to hold the products in cart
   List<ProductModel> products = [];
   LoginController loginController = Get.put(LoginController());
   SplashController splashController = Get.put(SplashController());
+  CommandeViewController commandeViewController =
+      Get.put(CommandeViewController());
   // to hold the total price of the cart products
   var total = 0.0;
 
@@ -37,6 +40,7 @@ class CartController extends GetxController {
       status: "New",
     );
     print(commandModel.toMap());
+    commandeViewController.addcommande(commandModel);
     CustomSnackBar.showCustomSnackBar(
         title: 'Purchased', message: 'Order placed with success');
   }
