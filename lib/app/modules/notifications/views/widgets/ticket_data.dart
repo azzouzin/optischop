@@ -52,10 +52,10 @@ class TicketData extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: EdgeInsets.only(top: 20.0),
+          padding: const EdgeInsets.only(top: 20.0),
           child: Text(
             '${payment.amount} DZ',
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black,
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold),

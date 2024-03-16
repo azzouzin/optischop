@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/components/custom_snackbar.dart';
 import 'package:getx_skeleton/app/data/models/user_model.dart';
 import 'package:getx_skeleton/app/routes/app_pages.dart';
 import 'package:logger/logger.dart';
@@ -39,10 +40,23 @@ class LoginController extends GetxController {
 
   Future login() async {
     try {
+      apiCallStatus = ApiCallStatus.loading;
+      update();
       UserModel userModel = await _authServices.signin(
           phoneController.text, passwordController.text);
+      apiCallStatus = ApiCallStatus.success;
+      update();
+      Get.toNamed(Routes.BASE);
+      CustomSnackBar.showCustomSnackBar(
+          title: "Welcome Back", message: "Welcome Back ${userModel.username}");
     } on Exception catch (e) {
       Logger().e(e);
+      CustomSnackBar.showCustomErrorSnackBar(
+        title: "Wrong Password Or Phone",
+        message: "Verifie Your Password and Phone Number",
+      );
+      apiCallStatus = ApiCallStatus.success;
+      update();
     }
   }
 

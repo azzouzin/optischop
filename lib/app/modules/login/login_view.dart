@@ -5,6 +5,7 @@ import 'package:getx_skeleton/app/components/custom_button.dart';
 import 'package:getx_skeleton/config/theme/my_spaces.dart';
 
 import '../../components/custom_textfield.dart';
+import '../../data/remote/api_call_status.dart';
 import './login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -66,6 +67,8 @@ class LoginView extends GetView<LoginController> {
                         controller.login();
                       },
                       hasShadow: false,
+                      disabled:
+                          controller.apiCallStatus == ApiCallStatus.loading,
                     )
                   ],
                 ),
