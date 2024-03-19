@@ -30,7 +30,7 @@ class CartItem extends GetView<CartController> {
                   color: Colors.white,
                   width: 105.w,
                   height: 125.h,
-                  child: Image.asset(
+                  child: Image.network(
                     product.images!.first,
                     //  height: 250.h,
                     fit: BoxFit.cover,

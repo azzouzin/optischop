@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
-import '../../utils/constants.dart';
 import '../data/models/product_model.dart';
-import '../modules/base/controllers/base_controller.dart';
 import '../routes/app_pages.dart';
 
 class ProductItem extends StatelessWidget {
@@ -36,7 +32,7 @@ class ProductItem extends StatelessWidget {
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(25.r),
-                  child: Image.asset(
+                  child: Image.network(
                     product.images!.first,
                     height: 200.h,
                     fit: BoxFit.cover,

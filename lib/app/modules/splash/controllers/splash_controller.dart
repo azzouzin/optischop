@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/category_model.dart';
+import 'package:getx_skeleton/app/data/models/type_model.dart';
 import 'package:getx_skeleton/app/data/remote/firestore_db.dart';
 import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 import 'package:getx_skeleton/utils/constants.dart';
@@ -17,8 +18,8 @@ class SplashController extends GetxController {
   final FireStorDB _fireStorDB = FireStorDB();
   User? user;
   List<CategoryModel> categoriesList = [CategoryModel(id: "0", name: "All")];
-  List<CategoryModel> unitsList = [CategoryModel(id: "0", name: "All")];
-  List<CategoryModel> typesList = [CategoryModel(id: "0", name: "All")];
+  List<UnitModel> unitsList = [];
+  List<TypeModel> typesList = [];
   LoginController loginController = Get.put(LoginController(), permanent: true);
 
   @override
@@ -55,10 +56,10 @@ class SplashController extends GetxController {
       categoriesList.add(CategoryModel.fromMap(element));
     }
     for (var element in unitData) {
-      unitsList.add(CategoryModel.fromMap(element));
+      unitsList.add(UnitModel.fromMap(element));
     }
     for (var element in typeData) {
-      typesList.add(CategoryModel.fromMap(element));
+      typesList.add(TypeModel.fromMap(element));
     }
     print(typesList.length);
     print(categoriesList.length);

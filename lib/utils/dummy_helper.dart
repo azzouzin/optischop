@@ -1,6 +1,6 @@
 import '../app/data/models/product_model.dart';
 import 'constants.dart';
-
+/*
 class DummyHelper {
   const DummyHelper._();
 
@@ -58,3 +58,4 @@ class DummyHelper {
         price: 59.99,),
   ];
 }
+*/

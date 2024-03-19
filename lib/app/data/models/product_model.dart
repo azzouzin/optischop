@@ -3,7 +3,7 @@ import 'dart:convert';
 
 class ProductModel {
   String? id;
-  List<String>? images;
+  List<dynamic>? images;
   String? name;
   int? quantity;
   double? price;
@@ -48,11 +48,12 @@ class ProductModel {
     return ProductModel(
       id: map['id'] != null ? map['id'] as String : null,
       images: map['imageUrls'] != null
-          ? List<String>.from((map['imageUrls'] as List<String>))
+          ? List<String>.from((map['imageUrls']))
           : null,
       name: map['label'] != null ? map['label'] as String : null,
-      quantity: map['quantity'] != null ? map['quantity'] as int : null,
-      price: map['price'] != null ? map['price'] as double : null,
+      quantity: 0,
+      //quantity: map['quantity'] != null ? map['quantity'] as int : null,
+      price: map['price'] != null ? double.parse(map['price']) : null,
       promoPrice: map['promoPrice'],
       qtePerEmbalage:
           map['qtePerEmbalage'] != null ? map['qtePerEmbalage'] as int : null,

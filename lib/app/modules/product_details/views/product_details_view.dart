@@ -58,7 +58,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                         itemCount: product.images!.length,
                         itemBuilder: (BuildContext context, int itemIndex,
                                 int pageViewIndex) =>
-                            Image.asset(
+                            Image.network(
                           product.images![itemIndex],
                           //height: 700.h,
                           fit: BoxFit.cover,
