@@ -31,11 +31,11 @@ class NotificationsView extends GetView<NotificationsController> {
                   padding: EdgeInsets.only(bottom: 16.0.w),
                   child: TicketWidget(
                     width: 350,
-                    height: 250.h,
+                    height: 260.h,
                     isCornerRounded: true,
                     color: Color.fromRGBO(223, 251, 222, 1),
                     //color: Get.theme.cardColor,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(15),
                     child: TicketData(payment: controller.paymentsList[index]),
                   ).animate().fade().slideY(
                         duration: const Duration(milliseconds: 300),

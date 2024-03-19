@@ -26,15 +26,15 @@ class HomeController extends GetxController {
         await _fireStorDB.getListDocuments(Constants.productsCollection);
     for (var element in productsData) {
       var product = ProductModel.fromMap(element);
-      product.category = _splashController.categoriesList
+      /* product.category = _splashController.categoriesList
               .where((element) => element.id == product.category)
               .isEmpty
           ? "No Category"
           : _splashController.categoriesList
               .where((element) => element.id == product.category)
               .first
-              .name;
-      // print("${product.name} ${product.category}");
+              .name;*/
+      print("${product.name} ${product.category}");
       // print(product.category);
       products.add(ProductModel.fromMap(element));
     }

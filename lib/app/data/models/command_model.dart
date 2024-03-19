@@ -8,6 +8,7 @@ class CommandModel {
   DateTime dateTime;
   String status;
   double prixTotal;
+  String? deliveryAddress;
   CommandModel({
     this.id,
     required this.products,
@@ -15,6 +16,7 @@ class CommandModel {
     required this.dateTime,
     required this.status,
     required this.prixTotal,
+    required this.deliveryAddress,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,6 +27,7 @@ class CommandModel {
       'dateTime': dateTime.millisecondsSinceEpoch,
       'status': status,
       'prixTotal': prixTotal,
+      'deliveryAddress': deliveryAddress,
     };
   }
 
@@ -32,7 +35,7 @@ class CommandModel {
     return CommandModel(
       id: map['id'] != null ? map['id'] as String : null,
       products: List<CommandProductsModel>.from(
-        (map['products'] as List<int>).map<CommandProductsModel>(
+        (map['products']).map<CommandProductsModel>(
           (x) => CommandProductsModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
@@ -40,6 +43,7 @@ class CommandModel {
       dateTime: DateTime.fromMillisecondsSinceEpoch(map['dateTime'] as int),
       prixTotal: map['prixTotal'] as double,
       status: map['status'] as String,
+      deliveryAddress: map['deliveryAddress'] as String?,
     );
   }
 

@@ -20,6 +20,12 @@ class HomeView extends GetView<HomeController> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: GetBuilder<HomeController>(builder: (controller) {
+          final myProducts = controller.selctedCategory.name == "All"
+              ? controller.products
+              : controller.products
+                  .where((element) =>
+                      element.category == controller.selctedCategory.id)
+                  .toList();
           return controller.isLoading
               ? Loader()
               : ListView(
@@ -57,14 +63,25 @@ class HomeView extends GetView<HomeController> {
                       ),
                       shrinkWrap: true,
                       primary: false,
-                      itemCount: controller.products.length,
-                      itemBuilder: (context, index) =>
-                          controller.selctedCategory.name ==
-                                  controller.products[index].category
-                              ? ProductItem(
-                                  product: controller.products[index],
-                                )
-                              : Container(),
+                      itemCount: myProducts.length,
+                      itemBuilder: (context, index) {
+                        print("${controller.selctedCategory.name}"
+                            "=="
+                            "${controller.products[index].category}");
+
+                        // return (controller.selctedCategory.id ==
+                        //             controller.products[index].category ||
+                        //         controller.selctedCategory.name == "All")
+                        //     ?
+                        return ProductItem(
+                          product: myProducts[index],
+                        );
+                        // : Container(
+                        //     height: 50,
+                        //     width: 50,
+                        //     color: Colors.black,
+                        //   );
+                      },
                     ),
                     10.verticalSpace,
                   ],

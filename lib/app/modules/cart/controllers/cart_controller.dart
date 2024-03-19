@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/command_model.dart';
 import 'package:getx_skeleton/app/modules/base/controllers/base_controller.dart';
@@ -15,7 +16,7 @@ class CartController extends GetxController {
   LoginController loginController = Get.put(LoginController());
   SplashController splashController = Get.put(SplashController());
   HomeController homeController = Get.put(HomeController());
-
+  TextEditingController deliveryAddressController = TextEditingController();
   CommandeViewController commandeViewController =
       Get.put(CommandeViewController());
   // to hold the total price of the cart products
@@ -33,14 +34,14 @@ class CartController extends GetxController {
     try {
       placeProductsInCommande(commandProducts);
       CommandModel commandModel = CommandModel(
-        clientId: loginController.appUser!.id,
-        dateTime: DateTime.now(),
-        products: commandProducts,
-        status: "New",
-        prixTotal: double.parse(
-          total.toStringAsFixed(2),
-        ),
-      );
+          clientId: loginController.appUser!.id,
+          dateTime: DateTime.now(),
+          products: commandProducts,
+          status: "New",
+          prixTotal: double.parse(
+            total.toStringAsFixed(2),
+          ),
+          deliveryAddress: deliveryAddressController.text);
       // print(commandModel.toMap());
       commandeViewController.addcommande(commandModel);
       CustomSnackBar.showCustomSnackBar(

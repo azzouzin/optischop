@@ -15,12 +15,22 @@ class CommandeViewController extends GetxController {
   // getting data from api
   getData() async {
     //todo Get Commandes From FireBase
+    getCommandes();
   }
 
   Future addcommande(CommandModel commandModel) async {
     commandesList.add(commandModel);
     await fireStorDB.insertDocument(
         commandModel.toMap(), Constants.commandesCollection);
+    update();
+  }
+
+  getCommandes() async {
+    var commandesData =
+        await fireStorDB.getListDocuments(Constants.commandesCollection);
+    for (var element in commandesData) {
+      commandesList.add(CommandModel.fromMap(element));
+    }
     update();
   }
 
