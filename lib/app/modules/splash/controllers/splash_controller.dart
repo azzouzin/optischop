@@ -16,7 +16,9 @@ class SplashController extends GetxController {
   final AuthServices _authServices = AuthServices();
   final FireStorDB _fireStorDB = FireStorDB();
   User? user;
-  List<CategoryModel> categories = [CategoryModel(id: "0", name: "All")];
+  List<CategoryModel> categoriesList = [CategoryModel(id: "0", name: "All")];
+  List<CategoryModel> unitsList = [CategoryModel(id: "0", name: "All")];
+  List<CategoryModel> typesList = [CategoryModel(id: "0", name: "All")];
   LoginController loginController = Get.put(LoginController(), permanent: true);
 
   @override
@@ -39,15 +41,27 @@ class SplashController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    getCategories();
+    getParameters();
   }
 
-  void getCategories() async {
+  void getParameters() async {
     var categoryData =
         await _fireStorDB.getListDocuments(Constants.categoryCollection);
+    var unitData =
+        await _fireStorDB.getListDocuments(Constants.unitsCollection);
+    var typeData =
+        await _fireStorDB.getListDocuments(Constants.typesCollection);
     for (var element in categoryData) {
-      categories.add(CategoryModel.fromMap(element));
-      print(categories.length);
+      categoriesList.add(CategoryModel.fromMap(element));
     }
+    for (var element in unitData) {
+      unitsList.add(CategoryModel.fromMap(element));
+    }
+    for (var element in typeData) {
+      typesList.add(CategoryModel.fromMap(element));
+    }
+    print(typesList.length);
+    print(categoriesList.length);
+    print(unitsList.length);
   }
 }

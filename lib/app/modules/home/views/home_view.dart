@@ -35,10 +35,10 @@ class HomeView extends GetView<HomeController> {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     //itemCount: 10,
-                    itemCount: splashController.categories.length,
+                    itemCount: splashController.categoriesList.length,
                     itemBuilder: (context, index) {
                       return CategoryItem(
-                          categoryModel: splashController.categories[index]);
+                          categoryModel: splashController.categoriesList[index]);
                     });
               }),
             ),

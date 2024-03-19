@@ -13,6 +13,7 @@ class ProductModel {
   String? embalage;
   String? unit;
   String? type;
+  String? category;
   ProductModel(
       {this.id,
       this.images,
@@ -23,6 +24,7 @@ class ProductModel {
       // this.unitPrice,
       this.qtePerEmbalage,
       this.embalage,
+      this.category,
       this.unit,
       this.promoPrice});
 
@@ -30,7 +32,7 @@ class ProductModel {
     return <String, dynamic>{
       'id': id,
       'images': images,
-      'name': name,
+      'label': name,
       'type': type,
       'quantity': quantity,
       'price': price,
@@ -38,16 +40,17 @@ class ProductModel {
       'qtePerEmbalage': qtePerEmbalage,
       'embalage': embalage,
       'unit': unit,
+      'category': category,
     };
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       id: map['id'] != null ? map['id'] as String : null,
-      images: map['images'] != null
-          ? List<String>.from((map['images'] as List<String>))
+      images: map['imageUrls'] != null
+          ? List<String>.from((map['imageUrls'] as List<String>))
           : null,
-      name: map['name'] != null ? map['name'] as String : null,
+      name: map['label'] != null ? map['label'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       price: map['price'] != null ? map['price'] as double : null,
       promoPrice: map['promoPrice'],
@@ -56,6 +59,7 @@ class ProductModel {
       embalage: map['embalage'] != null ? map['embalage'] as String : null,
       unit: map['unit'] != null ? map['unit'] as String : null,
       type: map['type'] as String?,
+      category: map['category'] as String?,
     );
   }
 

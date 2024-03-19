@@ -12,7 +12,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     getProducts();
-    selctedCategory = _splashController.categories.first;
+    selctedCategory = _splashController.categoriesList.first;
     super.onInit();
   }
 
