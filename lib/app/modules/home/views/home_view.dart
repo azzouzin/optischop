@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/data/models/category_model.dart';
 import 'package:getx_skeleton/app/modules/home/views/widgets/category_card.dart';
 import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
-import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
 import '../../../components/product_item.dart';
 import '../../../components/screen_title.dart';
 import '../controllers/home_controller.dart';
@@ -24,7 +22,7 @@ class HomeView extends GetView<HomeController> {
               ? controller.products
               : controller.products
                   .where((element) =>
-                      element.category == controller.selctedCategory.id)
+                      element.category == controller.selctedCategory.name)
                   .toList();
           return controller.isLoading
               ? Loader()
@@ -59,18 +57,14 @@ class HomeView extends GetView<HomeController> {
                         crossAxisCount: 2,
                         crossAxisSpacing: 15.w,
                         mainAxisSpacing: 15.h,
-                        mainAxisExtent: 260.h,
+                        mainAxisExtent: 280.h,
                       ),
                       shrinkWrap: true,
                       primary: false,
                       itemCount: myProducts.length,
                       itemBuilder: (context, index) {
-                        print("${controller.selctedCategory.name}"
-                            "=="
-                            "${controller.products[index].category}");
-
                         // return (controller.selctedCategory.id ==
-                        //             controller.products[index].category ||
+                        //    controller.products[index].category ||
                         //         controller.selctedCategory.name == "All")
                         //     ?
                         return ProductItem(

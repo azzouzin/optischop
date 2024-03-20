@@ -4,7 +4,6 @@ import 'package:getx_skeleton/app/data/models/command_model.dart';
 import 'package:getx_skeleton/app/modules/base/controllers/base_controller.dart';
 import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
-import '../../../../utils/dummy_helper.dart';
 import '../../../components/custom_snackbar.dart';
 import '../../../data/models/product_model.dart';
 import '../../commandeView/commandeview_controller.dart';
@@ -37,7 +36,7 @@ class CartController extends GetxController {
           clientId: loginController.appUser!.id,
           dateTime: DateTime.now(),
           products: commandProducts,
-          status: "New",
+          status: Status.New,
           prixTotal: double.parse(
             total.toStringAsFixed(2),
           ),

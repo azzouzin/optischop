@@ -15,7 +15,7 @@ class HomeController extends GetxController {
   bool isLoading = true;
   @override
   void onInit() {
-    getProducts();
+    _splashController.getParameters().then((value) => getProducts());
     selctedCategory = _splashController.categoriesList.first;
     super.onInit();
   }
@@ -23,20 +23,20 @@ class HomeController extends GetxController {
   void getProducts() async {
     //products = DummyHelper.products;
     var productsData =
-        await _fireStorDB.getListDocuments(Constants.productsCollection);
+        await _fireStorDB.getListDocuments(Constants.productsCollection, null);
     for (var element in productsData) {
       var product = ProductModel.fromMap(element);
-      /* product.category = _splashController.categoriesList
-              .where((element) => element.id == product.category)
-              .isEmpty
+      product.category = _splashController.categoriesList.where((element) {
+        // print("${element.id}" "===" "${product.category}");
+        return element.id == product.category;
+      }).isEmpty
           ? "No Category"
           : _splashController.categoriesList
               .where((element) => element.id == product.category)
               .first
-              .name;*/
-      print("${product.name} ${product.category}");
-      // print(product.category);
-      products.add(ProductModel.fromMap(element));
+              .name;
+      print(product.category);
+      products.add(product);
     }
     isLoading = false;
     update();

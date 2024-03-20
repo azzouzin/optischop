@@ -31,8 +31,8 @@ class SplashController extends GetxController {
       Get.offNamed(Routes.Login);
     } else {
       UserModel appUser = await _authServices.fetchUserData(user!.uid);
-      Logger().i("User Alerady Logged in");
-      Logger().i(appUser.id);
+    //  Logger().i("User Alerady Logged in");
+     // Logger().i(appUser.id);
       loginController.updateAppUserData(appUser);
       Get.offNamed(Routes.BASE);
     }
@@ -42,16 +42,16 @@ class SplashController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    getParameters();
+    // getParameters();
   }
 
-  void getParameters() async {
+  Future getParameters() async {
     var categoryData =
-        await _fireStorDB.getListDocuments(Constants.categoryCollection);
+        await _fireStorDB.getListDocuments(Constants.categoryCollection, null);
     var unitData =
-        await _fireStorDB.getListDocuments(Constants.unitsCollection);
+        await _fireStorDB.getListDocuments(Constants.unitsCollection, null);
     var typeData =
-        await _fireStorDB.getListDocuments(Constants.typesCollection);
+        await _fireStorDB.getListDocuments(Constants.typesCollection, null);
     for (var element in categoryData) {
       categoriesList.add(CategoryModel.fromMap(element));
     }
@@ -61,8 +61,8 @@ class SplashController extends GetxController {
     for (var element in typeData) {
       typesList.add(TypeModel.fromMap(element));
     }
-    print(typesList.length);
-    print(categoriesList.length);
-    print(unitsList.length);
+    // print(typesList.length);
+    // print(categoriesList.length);
+    // print(unitsList.length);
   }
 }

@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FireStorDB {
-  
   Future<String> uploadImage(XFile imageFile) async {
     final FirebaseStorage storage = FirebaseStorage.instance;
     final Reference ref = storage.ref().child('Images/${imageFile.name}');
@@ -51,17 +50,30 @@ class FireStorDB {
     });
   }
 
-  Future<List<Map<String, dynamic>>> getListDocuments(String collection) async {
-    return FirebaseFirestore.instance
-        .collection(collection)
-        .get()
-        .then((QuerySnapshot<Map<String, dynamic>> value) {
-      List<Map<String, dynamic>> listDocs = [];
-      for (var element in value.docs) {
-        listDocs.add(element.data());
-      }
-      return listDocs;
-    });
+  Future<List<Map<String, dynamic>>> getListDocuments(
+      String collection, bool? isDesending) async {
+    return isDesending != null
+        ? FirebaseFirestore.instance
+            .collection(collection)
+            .orderBy("dateTime", descending: isDesending)
+            .get()
+            .then((QuerySnapshot<Map<String, dynamic>> value) {
+            List<Map<String, dynamic>> listDocs = [];
+            for (var element in value.docs) {
+              listDocs.add(element.data());
+            }
+            return listDocs;
+          })
+        : FirebaseFirestore.instance
+            .collection(collection)
+            .get()
+            .then((QuerySnapshot<Map<String, dynamic>> value) {
+            List<Map<String, dynamic>> listDocs = [];
+            for (var element in value.docs) {
+              listDocs.add(element.data());
+            }
+            return listDocs;
+          });
   }
 
   Future<List<Map<String, dynamic>>> getFiltredDocuments({

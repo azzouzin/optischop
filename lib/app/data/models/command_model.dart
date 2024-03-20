@@ -6,7 +6,7 @@ class CommandModel {
   List<CommandProductsModel> products;
   String? clientId;
   DateTime dateTime;
-  String status;
+  Status status;
   double prixTotal;
   String? deliveryAddress;
   CommandModel({
@@ -25,7 +25,7 @@ class CommandModel {
       'products': products.map((x) => x.toMap()).toList(),
       'clientId': clientId,
       'dateTime': dateTime.millisecondsSinceEpoch,
-      'status': status,
+      'status': toMapStatus(status),
       'prixTotal': prixTotal,
       'deliveryAddress': deliveryAddress,
     };
@@ -41,10 +41,50 @@ class CommandModel {
       ),
       clientId: map['clientId'] != null ? map['clientId'] as String : null,
       dateTime: DateTime.fromMillisecondsSinceEpoch(map['dateTime'] as int),
+      status: CommandModel.fromMapStatus(map['status']),
       prixTotal: map['prixTotal'] as double,
-      status: map['status'] as String,
-      deliveryAddress: map['deliveryAddress'] as String?,
+      deliveryAddress: map['deliveryAddress'] != null
+          ? map['deliveryAddress'] as String
+          : null,
     );
+  }
+
+  String getStatus() {
+    return toMapStatus(status);
+  }
+
+  static Status fromMapStatus(String val) {
+    switch (val) {
+      case "New":
+        return Status.New;
+      case "Validated":
+        return Status.Validated;
+      case "Shipped":
+        return Status.Shipped;
+      case "Deliverd":
+        return Status.Deliverd;
+      case "Canceled":
+        return Status.Canceled;
+      default:
+        return Status.New;
+    }
+  }
+
+  String toMapStatus(Status val) {
+    switch (val) {
+      case Status.New:
+        return "New";
+      case Status.Validated:
+        return "Validated";
+      case Status.Shipped:
+        return "Shipped";
+      case Status.Shipped:
+        return "Deliverd";
+      case Status.Shipped:
+        return "Shipped";
+      default:
+        return "New";
+    }
   }
 
   String toJson() => json.encode(toMap());
@@ -83,4 +123,12 @@ class CommandProductsModel {
 
   factory CommandProductsModel.fromJson(String source) =>
       CommandProductsModel.fromMap(json.decode(source) as Map<String, dynamic>);
+}
+
+enum Status {
+  New,
+  Validated,
+  Shipped,
+  Deliverd,
+  Canceled,
 }

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/command_model.dart';
 import 'package:getx_skeleton/app/data/remote/firestore_db.dart';
 import 'package:getx_skeleton/utils/constants.dart';
+import 'package:logger/logger.dart';
 
 import '../../data/remote/api_call_status.dart';
 
@@ -26,11 +27,18 @@ class CommandeViewController extends GetxController {
   }
 
   getCommandes() async {
-    var commandesData =
-        await fireStorDB.getListDocuments(Constants.commandesCollection);
-    for (var element in commandesData) {
-      commandesList.add(CommandModel.fromMap(element));
+    Logger().i("commandesList.length");
+    try {
+      var commandesData = await fireStorDB.getListDocuments(
+          Constants.commandesCollection, true);
+      for (var element in commandesData) {
+        commandesList.add(CommandModel.fromMap(element));
+      }
+    } on Exception catch (e) {
+      Logger().e(e);
     }
+
+    Logger().i(commandesList.length);
     update();
   }
 

@@ -125,7 +125,7 @@ class CommandeCard extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                commandModel.status,
+                commandModel.getStatus(),
                 style: Get.textTheme.bodyLarge!.copyWith(
                   color: const Color.fromARGB(255, 177, 133, 0),
                 ),

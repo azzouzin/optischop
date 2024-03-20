@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 class ProductModel {
   String? id;
   List<dynamic>? images;
@@ -48,12 +50,17 @@ class ProductModel {
     return ProductModel(
       id: map['id'] != null ? map['id'] as String : null,
       images: map['imageUrls'] != null
-          ? List<String>.from((map['imageUrls']))
+          ? map['imageUrls'].isEmpty
+              ? [
+                  "https://firebasestorage.googleapis.com/v0/b/eurlplast.appspot.com/o/Realistic-Plastic-Cup-Mockup-PSD-Graphics-5854492-1.jpg?alt=media&token=e5d205cf-d279-46c8-9ee3-7ab1b608234d"
+                ]
+              : List<String>.from((map['imageUrls']))
           : null,
       name: map['label'] != null ? map['label'] as String : null,
       quantity: 0,
       //quantity: map['quantity'] != null ? map['quantity'] as int : null,
-      price: map['price'] != null ? double.parse(map['price']) : null,
+      price:
+          map['price'] != null ? double.parse((map['price']).toString()) : null,
       promoPrice: map['promoPrice'],
       qtePerEmbalage:
           map['qtePerEmbalage'] != null ? map['qtePerEmbalage'] as int : null,

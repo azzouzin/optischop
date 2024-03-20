@@ -16,65 +16,66 @@ class ProductItem extends StatelessWidget {
     return GestureDetector(
       onTap: () =>
           Get.toNamed(Routes.PRODUCT_DETAILS, arguments: {"product": product}),
-      child: SizedBox(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 200.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFEDF1FA),
-                    borderRadius: BorderRadius.circular(25.r),
-                  ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200.h,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFEDF1FA),
+                  borderRadius: BorderRadius.circular(25.r),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 200.h,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(25.r),
-                    child: Image.network(
-                      product.images!.first,
-                      height: 200.h,
-                      fit: BoxFit.cover,
-                    ).animate().slideX(
-                          duration: const Duration(milliseconds: 200),
-                          begin: 1,
-                          curve: Curves.easeInSine,
-                        ),
-                  ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                // height: 200.h,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(25.r),
+                  child: Image.network(
+                    product.images!.first,
+                    height: 200.h,
+                    fit: BoxFit.cover,
+                  ).animate().slideX(
+                        duration: const Duration(milliseconds: 200),
+                        begin: 1,
+                        curve: Curves.easeInSine,
+                      ),
                 ),
-                /* Positioned(
-                  left: 15.w,
-                  bottom: 20.h,
-                  child: GetBuilder<BaseController>(
-                    id: 'FavoriteButton',
-                    builder: (controller) => GestureDetector(
-                      onTap: () => controller.onFavoriteButtonPressed(
-                          productId: product.id!),
-                      child: CircleAvatar(
-                        radius: 18.r,
-                        backgroundColor: Colors.white,
-                        child: SvgPicture.asset(
-                          product.isFavorite!
-                              ? Constants.favFilledIcon
-                              : Constants.favOutlinedIcon,
-                          color:
-                              product.isFavorite! ? null : theme.primaryColor,
-                        ),
+              ),
+              /* Positioned(
+                left: 15.w,
+                bottom: 20.h,
+                child: GetBuilder<BaseController>(
+                  id: 'FavoriteButton',
+                  builder: (controller) => GestureDetector(
+                    onTap: () => controller.onFavoriteButtonPressed(
+                        productId: product.id!),
+                    child: CircleAvatar(
+                      radius: 18.r,
+                      backgroundColor: Colors.white,
+                      child: SvgPicture.asset(
+                        product.isFavorite!
+                            ? Constants.favFilledIcon
+                            : Constants.favOutlinedIcon,
+                        color:
+                            product.isFavorite! ? null : theme.primaryColor,
                       ),
                     ),
                   ),
-                ).animate().fade(),
-              */
-              ],
-            ),
-            10.verticalSpace,
-            Row(
-              children: [
-                Text(product.name!,
+                ),
+              ).animate().fade(),
+            */
+            ],
+          ),
+          10.verticalSpace,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(product.name!,
                         style: theme.textTheme.bodyMedium!
                             .copyWith(fontWeight: FontWeight.w600))
                     .animate()
@@ -84,21 +85,34 @@ class ProductItem extends StatelessWidget {
                       begin: 1,
                       curve: Curves.easeInSine,
                     ),
-                Spacer(),
-                Text(product.embalage ?? "", style: theme.textTheme.bodyMedium)
-                    .animate()
-                    .fade()
-                    .slideY(
-                      duration: const Duration(milliseconds: 200),
-                      begin: 1,
-                      curve: Curves.easeInSine,
-                    ),
-              ],
-            ),
-            5.verticalSpace,
-            product.promoPrice != null ? promoPrice(theme) : normalPrice(theme),
-          ],
-        ),
+              ),
+              //Spacer(),
+              Column(
+                children: [
+                  Text(product.category ?? "",
+                          style: theme.textTheme.bodyMedium)
+                      .animate()
+                      .fade()
+                      .slideY(
+                        duration: const Duration(milliseconds: 200),
+                        begin: 1,
+                        curve: Curves.easeInSine,
+                      ),
+                  Text(product.unit ?? "", style: theme.textTheme.bodyMedium)
+                      .animate()
+                      .fade()
+                      .slideY(
+                        duration: const Duration(milliseconds: 200),
+                        begin: 1,
+                        curve: Curves.easeInSine,
+                      ),
+                ],
+              ),
+            ],
+          ),
+          5.verticalSpace,
+          product.promoPrice != null ? promoPrice(theme) : normalPrice(theme),
+        ],
       ),
     );
   }
