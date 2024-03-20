@@ -78,10 +78,10 @@ class CommandModel {
         return "Validated";
       case Status.Shipped:
         return "Shipped";
-      case Status.Shipped:
+      case Status.Deliverd:
         return "Deliverd";
-      case Status.Shipped:
-        return "Shipped";
+      case Status.Canceled:
+        return "Canceled";
       default:
         return "New";
     }

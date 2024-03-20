@@ -87,31 +87,33 @@ class ProductItem extends StatelessWidget {
                     ),
               ),
               //Spacer(),
-              Column(
-                children: [
-                  Text(product.category ?? "",
-                          style: theme.textTheme.bodyMedium)
-                      .animate()
-                      .fade()
-                      .slideY(
-                        duration: const Duration(milliseconds: 200),
-                        begin: 1,
-                        curve: Curves.easeInSine,
-                      ),
-                  Text(product.unit ?? "", style: theme.textTheme.bodyMedium)
-                      .animate()
-                      .fade()
-                      .slideY(
-                        duration: const Duration(milliseconds: 200),
-                        begin: 1,
-                        curve: Curves.easeInSine,
-                      ),
-                ],
-              ),
+              Text(product.type ?? "", style: theme.textTheme.bodyMedium)
+                  .animate()
+                  .fade()
+                  .slideY(
+                    duration: const Duration(milliseconds: 200),
+                    begin: 1,
+                    curve: Curves.easeInSine,
+                  ),
             ],
           ),
           5.verticalSpace,
-          product.promoPrice != null ? promoPrice(theme) : normalPrice(theme),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              product.promoPrice != null
+                  ? promoPrice(theme)
+                  : normalPrice(theme),
+              Text(product.unit ?? "", style: theme.textTheme.bodyMedium)
+                  .animate()
+                  .fade()
+                  .slideY(
+                    duration: const Duration(milliseconds: 200),
+                    begin: 1,
+                    curve: Curves.easeInSine,
+                  ),
+            ],
+          ),
         ],
       ),
     );

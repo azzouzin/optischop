@@ -20,22 +20,15 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
+  late ProductModel product;
   void getProducts() async {
     //products = DummyHelper.products;
-    var productsData =
+    final productsData =
         await _fireStorDB.getListDocuments(Constants.productsCollection, null);
     for (var element in productsData) {
-      var product = ProductModel.fromMap(element);
-      product.category = _splashController.categoriesList.where((element) {
-        // print("${element.id}" "===" "${product.category}");
-        return element.id == product.category;
-      }).isEmpty
-          ? "No Category"
-          : _splashController.categoriesList
-              .where((element) => element.id == product.category)
-              .first
-              .name;
-      print(product.category);
+      product = ProductModel.fromMap(element);
+      parseData();
+
       products.add(product);
     }
     isLoading = false;
@@ -45,5 +38,36 @@ class HomeController extends GetxController {
   void changeCategory(CategoryModel categoryModel) {
     selctedCategory = categoryModel;
     update();
+  }
+
+  void parseData() {
+    product.category = _splashController.categoriesList.where((element) {
+      // print("${element.id}" "===" "${product.category}");
+      return element.id == product.category;
+    }).isEmpty
+        ? "No Category"
+        : _splashController.categoriesList
+            .where((element) => element.id == product.category)
+            .first
+            .name;
+
+    product.unit = _splashController.unitsList.where((element) {
+      // print("${element.id}" "===" "${product.category}");
+      return element.id == product.unit;
+    }).isEmpty
+        ? "No Unit"
+        : _splashController.unitsList
+            .where((element) => element.id == product.unit)
+            .first
+            .name;
+    product.type = _splashController.typesList.where((element) {
+      // print("${element.id}" "===" "${product.category}");
+      return element.id == product.type;
+    }).isEmpty
+        ? "No Unit"
+        : _splashController.typesList
+            .where((element) => element.id == product.type)
+            .first
+            .name;
   }
 }
