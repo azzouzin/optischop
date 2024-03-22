@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/routes/app_pages.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
 import '../../../data/models/command_model.dart';
@@ -23,76 +24,83 @@ class CommandeCard extends StatelessWidget {
     return title;
   }
 
+//
   @override
   Widget build(BuildContext context) {
     // commandModel.status = Status.Deliverd;
-    return Container(
-      margin: EdgeInsets.only(bottom: 16.h),
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            offset: const Offset(5.0, 5.0),
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-            // Optional: controls how much the shadow spreads
-          ),
-        ],
-      ),
-      width: Get.width * 0.9,
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              getIcon(commandModel.status),
-              20.horizontalSpace,
-              Expanded(
+    return InkWell(
+      onTap: () {
+        Get.toNamed(Routes.CommandeDetails,
+            arguments: {"commande": commandModel});
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16.h),
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              offset: const Offset(5.0, 5.0),
+              blurRadius: 10.0,
+              spreadRadius: 2.0,
+              // Optional: controls how much the shadow spreads
+            ),
+          ],
+        ),
+        width: Get.width * 0.9,
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                getIcon(commandModel.status),
+                20.horizontalSpace,
+                Expanded(
+                  child: Text(
+                    getTitle(),
+                    softWrap: true,
+                    style: Get.textTheme.bodyMedium!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Spacer(),
+                const Icon(Icons.menu_sharp),
+              ],
+            ),
+            8.verticalSpace,
+            ticketDetailsWidget(
+              "Destination",
+              commandModel.deliveryAddress ?? "",
+              "Total",
+              "${commandModel.prixTotal}" + " DA",
+              "Date",
+              commandModel.dateTime.toString().substring(0, 9),
+              "Heur",
+              commandModel.dateTime.toString().substring(11, 16),
+            ),
+            16.verticalSpace,
+            Container(
+              width: Get.width * 0.8,
+              height: Get.height * 0.05,
+              decoration: BoxDecoration(
+                color: TinyColor.fromColor(getColor(commandModel.status))
+                    .brighten(25)
+                    .color,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
                 child: Text(
-                  getTitle(),
-                  softWrap: true,
-                  style: Get.textTheme.bodyMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
-              const Spacer(),
-              const Icon(Icons.menu_sharp),
-            ],
-          ),
-          8.verticalSpace,
-          ticketDetailsWidget(
-            "Destination",
-            commandModel.deliveryAddress ?? "",
-            "Total",
-            "${commandModel.prixTotal}" + " DA",
-            "Date",
-            commandModel.dateTime.toString().substring(0, 9),
-            "Heur",
-            commandModel.dateTime.toString().substring(11, 16),
-          ),
-          16.verticalSpace,
-          Container(
-            width: Get.width * 0.8,
-            height: Get.height * 0.05,
-            decoration: BoxDecoration(
-              color: TinyColor.fromColor(getColor(commandModel.status))
-                  .brighten(25)
-                  .color,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Text(
-                commandModel.getStatus(),
-                style: Get.textTheme.bodyLarge!.copyWith(
-                  color: getColor(commandModel.status),
+                  commandModel.getStatus(),
+                  style: Get.textTheme.bodyLarge!.copyWith(
+                    color: getColor(commandModel.status),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -40,7 +40,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.HOME,
-      page: () =>  HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -48,9 +48,9 @@ class AppPages {
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
-     GetPage(
+    GetPage(
       name: Routes.Commandes,
-      page: () =>  CommandeView(),
+      page: () => CommandeView(),
       binding: CommandeViewBinding(),
     ),
     GetPage(
@@ -68,8 +68,8 @@ class AppPages {
       page: () => SettingsView(),
       binding: SettingsBinding(),
     ),
-     GetPage(
-      name: Routes.SETTINGS,
+    GetPage(
+      name: Routes.CommandeDetails,
       page: () => CommandeDetailsView(),
       binding: CommandeViewBinding(),
     ),
