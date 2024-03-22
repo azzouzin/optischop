@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/commandeView/commandeview_binding.dart';
 import 'package:getx_skeleton/app/modules/commandeView/commandeview_view.dart';
+import 'package:getx_skeleton/app/modules/commande_details/commande_details_view.dart';
 import 'package:getx_skeleton/app/modules/login/login_binding.dart';
 import 'package:getx_skeleton/app/modules/login/login_view.dart';
 
@@ -66,6 +67,11 @@ class AppPages {
       name: Routes.SETTINGS,
       page: () => SettingsView(),
       binding: SettingsBinding(),
+    ),
+     GetPage(
+      name: Routes.SETTINGS,
+      page: () => CommandeDetailsView(),
+      binding: CommandeViewBinding(),
     ),
     GetPage(
       name: Routes.PRODUCT_DETAILS,

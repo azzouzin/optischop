@@ -10,6 +10,7 @@ abstract class Routes {
   static const CART = '/CART';
   static const NOTIFICATIONS = '/NOTIFICATIONS';
   static const SETTINGS = '/SETTINGS';
+  static const CommandeDetails = '/CommandeDetails';
   static const PRODUCT_DETAILS = '/PRODUCT_DETAILS';
   static const Login = '/LoginView';
 }
