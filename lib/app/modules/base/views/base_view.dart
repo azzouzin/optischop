@@ -26,8 +26,8 @@ class BaseView extends GetView<BaseController> {
             index: controller.currentIndex,
             children: [
               HomeView(),
-               CommandeView(),
-              const CartView(),
+              CommandeView(),
+              CartView(),
               const NotificationsView(),
               SettingsView()
             ],

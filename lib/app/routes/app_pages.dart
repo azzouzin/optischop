@@ -55,7 +55,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.CART,
-      page: () => const CartView(),
+      page: () => CartView(),
       binding: CartBinding(),
     ),
     GetPage(

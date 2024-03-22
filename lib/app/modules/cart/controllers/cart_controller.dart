@@ -15,6 +15,7 @@ class CartController extends GetxController {
   LoginController loginController = Get.put(LoginController());
   SplashController splashController = Get.put(SplashController());
   HomeController homeController = Get.put(HomeController());
+
   TextEditingController deliveryAddressController = TextEditingController();
   CommandeViewController commandeViewController =
       Get.put(CommandeViewController());

@@ -57,7 +57,7 @@ class HomeView extends GetView<HomeController> {
                         crossAxisCount: 2,
                         crossAxisSpacing: 15.w,
                         mainAxisSpacing: 15.h,
-                        mainAxisExtent: 280.h,
+                        mainAxisExtent: 300.h,
                       ),
                       shrinkWrap: true,
                       primary: false,

@@ -37,6 +37,7 @@ class LoginView extends GetView<LoginController> {
                       child: Column(
                         children: [
                           CustomTextField(
+                            isTransparent: false,
                             iconData: Icons.email,
                             obscureText: false,
                             controller: controller.phoneController,
@@ -48,6 +49,7 @@ class LoginView extends GetView<LoginController> {
                           ),
                           verticalSpaceMedium,
                           CustomTextField(
+                            isTransparent: false,
                             obscureText: true,
                             iconData: Icons.lock_open,
                             controller: controller.passwordController,

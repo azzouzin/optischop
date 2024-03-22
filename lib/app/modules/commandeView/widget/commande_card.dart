@@ -194,9 +194,14 @@ class CommandeCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                firstDesc,
-                style: const TextStyle(color: Colors.black),
+              SizedBox(
+                width: Get.width * 0.3,
+                child: Text(
+                  firstDesc,
+                  style: const TextStyle(color: Colors.black),
+                  softWrap: false,
+                  overflow: TextOverflow.fade,
+                ),
               ),
               8.verticalSpace,
               Text(

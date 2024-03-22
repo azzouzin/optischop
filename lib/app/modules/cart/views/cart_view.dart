@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/components/custom_textfield.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/custom_button.dart';
@@ -13,8 +14,7 @@ import '../controllers/cart_controller.dart';
 import 'widgets/cart_item.dart';
 
 class CartView extends GetView<CartController> {
-  const CartView({Key? key}) : super(key: key);
-
+  CartView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
@@ -105,6 +105,66 @@ class CartView extends GetView<CartController> {
                       curve: Curves.easeInSine,
                     ),
               ),
+              20.verticalSpace,
+              Visibility(
+                visible: controller.products.isNotEmpty,
+                child: Row(
+                  children: [
+                    Container(
+                      //  width: 65.w,
+                      height: 75.h,
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      decoration: BoxDecoration(
+                        color: Get.theme.primaryColor,
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(Constants.busIcon),
+                          5.verticalSpace,
+                          Text(
+                            'Déstination',
+                            style: Get.theme.textTheme.displaySmall?.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    20.horizontalSpace,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Déstination:',
+                            style: Get.theme.textTheme.bodyLarge?.copyWith(
+                              fontSize: 18.sp,
+                            )),
+                        10.verticalSpace,
+                        SizedBox(
+                          width: 200.w,
+                          height: 40.h,
+                          child: CustomTextField(
+                            isTransparent: true,
+                            controller: controller.deliveryAddressController,
+                            hint: "Destination",
+                            iconData: Icons.abc,
+                            label: "Destination",
+                            obscureText: false,
+                            textInputType: TextInputType.text,
+                            onChanged: (val) {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ).animate().fade().slideX(
+                      duration: const Duration(milliseconds: 300),
+                      begin: -1,
+                      curve: Curves.easeInSine,
+                    ),
+              ),
+              15.verticalSpace,
               30.verticalSpace,
               Visibility(
                 visible: controller.products.isNotEmpty,
