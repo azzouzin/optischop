@@ -26,11 +26,13 @@ class SettingsView extends GetView<SettingsController> {
               dividerEndIndent: 230,
             ),
             20.verticalSpace,
-            Text('Account',
-                style: theme.textTheme.displayMedium?.copyWith(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.normal,
-                )),
+            Text(
+              'Account',
+              style: theme.textTheme.displayMedium?.copyWith(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
             20.verticalSpace,
             SettingsItem(
               title: loginController.appUser!.username!,

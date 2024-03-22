@@ -8,9 +8,9 @@ class AuthServices {
   User? checkCurrentUser() {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      Logger().i(user.email);
+   //   Logger().i(user.email);
     } else {
-      Logger().w("FireBase User = NULL");
+     // Logger().w("FireBase User = NULL");
     }
     return user;
   }
@@ -79,7 +79,7 @@ class AuthServices {
   }
 
   Future<UserModel> fetchUserData(String userId) async {
-    Logger().i(userId);
+   // Logger().i(userId);
 
     return await FirebaseFirestore.instance
         .collection('users')

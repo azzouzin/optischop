@@ -44,6 +44,7 @@ class LoginController extends GetxController {
       update();
       UserModel userModel = await _authServices.signin(
           phoneController.text, passwordController.text);
+      appUser = userModel;
       apiCallStatus = ApiCallStatus.success;
       update();
       Get.toNamed(Routes.BASE);

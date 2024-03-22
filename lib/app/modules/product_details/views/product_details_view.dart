@@ -12,6 +12,7 @@ import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/custom_button.dart';
+import '../../splash/controllers/splash_controller.dart';
 import '../controllers/product_details_controller.dart';
 
 class ProductDetailsView extends GetView<ProductDetailsController> {
@@ -21,6 +22,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
   final ProductDetailsController controller =
       Get.put(ProductDetailsController());
   final CarouselController _controller = CarouselController();
+  SplashController splashController = Get.find();
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
@@ -58,15 +60,19 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                         itemCount: product.images!.length,
                         itemBuilder: (BuildContext context, int itemIndex,
                                 int pageViewIndex) =>
-                            Image.asset(
-                          product.images![itemIndex],
-                          //height: 700.h,
-                          fit: BoxFit.cover,
-                        ).animate().slideX(
-                                  duration: const Duration(milliseconds: 300),
-                                  begin: 1,
-                                  curve: Curves.easeInSine,
-                                ),
+                            SizedBox(
+                          height: 450.h,
+                          width: Get.width,
+                          child: Image.network(
+                            product.images![itemIndex],
+                            //height: 700.h,
+                            fit: BoxFit.cover,
+                          ).animate().slideX(
+                                duration: const Duration(milliseconds: 300),
+                                begin: 1,
+                                curve: Curves.easeInSine,
+                              ),
+                        ),
                       ),
                     ),
                     Positioned(
@@ -128,7 +134,14 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                             begin: -1,
                             curve: Curves.easeInSine,
                           ),
-                      Text(product.embalage ?? "",
+                      Text(product.category!,
+                              /* splashController.categoriesList
+                                      .where((element) =>
+                                          element.id == product.category)
+                                      .first
+                                      .name ??
+                                  "",
+                                  */
                               style: theme.textTheme.bodyLarge!
                                   .copyWith(fontWeight: FontWeight.w300))
                           .animate()

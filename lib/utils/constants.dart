@@ -36,6 +36,8 @@ class Constants {
   // Firebase Collections Names
   static const productsCollection = 'products';
   static const categoryCollection = 'categories';
+  static const unitsCollection = 'units';
+  static const typesCollection = 'types';
   static const usersCollection = 'users';
   static const paymentsCollection = 'payments';
   static const commandesCollection = 'commandes';

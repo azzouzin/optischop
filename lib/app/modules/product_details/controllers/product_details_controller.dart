@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/modules/home/controllers/home_controller.dart';
+import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
 
-import '../../../../utils/dummy_helper.dart';
 import '../../../data/models/product_model.dart';
 import '../../cart/controllers/cart_controller.dart';
 
@@ -10,10 +11,11 @@ class ProductDetailsController extends GetxController {
   var selectedSize = 'M';
 
   TextEditingController qtyController = TextEditingController();
+  HomeController homeController = Get.put(HomeController());
 
   /// when the user press on add to cart button
   onAddToCartPressed(ProductModel product) {
-    var mProduct = DummyHelper.products.firstWhere((p) => p.id == product.id);
+    var mProduct = homeController.products.firstWhere((p) => p.id == product.id);
     mProduct.quantity = int.parse(qtyController.text);
     Get.find<CartController>().getCartProducts();
     Get.back();
