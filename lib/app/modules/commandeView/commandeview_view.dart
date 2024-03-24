@@ -35,7 +35,8 @@ class CommandeView extends StatelessWidget {
                       ),
                     ),
                   )
-                  .toList()
+                  .toList(),
+              100.verticalSpace,
             ],
           ),
         ),

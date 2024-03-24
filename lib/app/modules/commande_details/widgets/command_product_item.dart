@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../data/models/product_model.dart';
@@ -50,24 +49,25 @@ class ProductCommandeItem extends StatelessWidget {
                   overflow: TextOverflow.fade,
                 ),
               ),
-              5.verticalSpace,
-              Text('Type: ${product.type ?? ""}',
-                  style: theme.textTheme.bodyMedium?.copyWith(fontSize: 16.sp)),
-              5.verticalSpace,
+              10.verticalSpace,
               Text(
                 '${product.promoPrice ?? product.price}DZD',
                 style: theme.textTheme.displayLarge?.copyWith(
                   fontSize: 18.sp,
                 ),
               ),
-              10.verticalSpace,
+              5.verticalSpace,
+              Text('Unité : ${product.unit ?? ""}',
+                  style: theme.textTheme.bodyMedium),
+              5.verticalSpace,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  10.horizontalSpace,
                   Text('Qte : ${product.quantity}',
                       style: theme.textTheme.displaySmall),
                   10.horizontalSpace,
+                  Text('${product.type ?? ""}',
+                      style: theme.textTheme.bodyMedium),
                 ],
               ),
             ],

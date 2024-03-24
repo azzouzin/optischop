@@ -20,7 +20,7 @@ class CommandeDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     double total = 0;
     commandeModel.products.forEach((element) {
-      total = total + element.price;
+      total = total + element.price * element.qte;
     });
     return Scaffold(
       body: SafeArea(
@@ -88,7 +88,10 @@ class CommandeDetailsView extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(Constants.busIcon),
+                          const Icon(
+                            Icons.done_all,
+                            color: Colors.white,
+                          ),
                           5.verticalSpace,
                           Text(
                             'FREE',
@@ -139,23 +142,13 @@ class CommandeDetailsView extends StatelessWidget {
                     Container(
                       width: 65.w,
                       height: 65.h,
+                      padding: EdgeInsets.all(16.w),
                       decoration: BoxDecoration(
                         color: Get.theme.primaryColor,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(Constants.busIcon),
-                          5.verticalSpace,
-                          Text(
-                            'Sétif',
-                            style: Get.theme.textTheme.displaySmall?.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: SvgPicture.asset(Constants.busIcon,
+                          fit: BoxFit.contain),
                     ),
                     20.horizontalSpace,
                     Column(
@@ -206,16 +199,16 @@ class CommandeDetailsView extends StatelessWidget {
   Color getColor(Status status) {
     switch (status) {
       case Status.New:
-        return Color.fromARGB(255, 177, 133, 0);
+        return const Color.fromARGB(255, 177, 133, 0);
       case Status.Validated:
         return Colors.blue;
       case Status.Shipped:
-        return Color.fromARGB(255, 192, 86, 15);
+        return const Color.fromARGB(255, 192, 86, 15);
       case Status.Deliverd:
         return Colors.green;
 
       default:
-        return Color.fromARGB(255, 177, 133, 0);
+        return const Color.fromARGB(255, 177, 133, 0);
     }
   }
 }

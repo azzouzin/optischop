@@ -129,6 +129,8 @@ class CommandeCard extends StatelessWidget {
         return Color.fromARGB(255, 192, 86, 15);
       case Status.Deliverd:
         return Colors.green;
+      case Status.Canceled:
+        return Colors.redAccent;
 
       default:
         return Color.fromARGB(255, 177, 133, 0);
@@ -145,6 +147,8 @@ class CommandeCard extends StatelessWidget {
         return Icons.fire_truck_outlined;
       case Status.Deliverd:
         return Icons.done_all_outlined;
+      case Status.Canceled:
+        return Icons.cancel;
 
       default:
         return Icons.timelapse;

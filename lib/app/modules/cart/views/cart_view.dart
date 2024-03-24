@@ -58,16 +58,13 @@ class CartView extends GetView<CartController> {
                         color: theme.primaryColor,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(Constants.busIcon),
-                          5.verticalSpace,
-                          Text(
-                            'FREE',
-                            style: theme.textTheme.displaySmall?.copyWith(
-                              color: Colors.white,
-                            ),
+                          Icon(
+                            Icons.done_all,
+                            color: Colors.white,
+                            size: 30,
                           ),
                         ],
                       ),
@@ -111,26 +108,14 @@ class CartView extends GetView<CartController> {
                 child: Row(
                   children: [
                     Container(
-                      //  width: 65.w,
+                      width: 65.w,
                       height: 75.h,
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      padding: EdgeInsets.all(16.w),
                       decoration: BoxDecoration(
                         color: Get.theme.primaryColor,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(Constants.busIcon),
-                          5.verticalSpace,
-                          Text(
-                            'Déstination',
-                            style: Get.theme.textTheme.displaySmall?.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: SvgPicture.asset(Constants.busIcon),
                     ),
                     20.horizontalSpace,
                     Column(
@@ -145,10 +130,10 @@ class CartView extends GetView<CartController> {
                           width: 200.w,
                           height: 40.h,
                           child: CustomTextField(
-                            isTransparent: true,
+                            isTransparent: false,
                             controller: controller.deliveryAddressController,
                             hint: "Destination",
-                            iconData: Icons.abc,
+                            iconData: Icons.home_filled,
                             label: "Destination",
                             obscureText: false,
                             textInputType: TextInputType.text,
