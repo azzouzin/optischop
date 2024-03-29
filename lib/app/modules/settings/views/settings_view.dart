@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/login/login_controller.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/screen_title.dart';
@@ -64,7 +65,7 @@ class SettingsView extends GetView<SettingsController> {
             ),
             25.verticalSpace,
             SettingsItem(
-              title: 'Sign Out',
+              title: Strings.logout.tr,
               icon: Constants.logoutIcon,
               onTap: loginController.logout,
             ),

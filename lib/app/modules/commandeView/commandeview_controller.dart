@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/command_model.dart';
 import 'package:getx_skeleton/app/data/remote/firestore_db.dart';
+import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 import 'package:getx_skeleton/utils/constants.dart';
 import 'package:logger/logger.dart';
 
@@ -10,7 +11,7 @@ class CommandeViewController extends GetxController {
   // hold data coming from api
   RxList commandesList = [].obs;
   FireStorDB fireStorDB = FireStorDB();
-  // api call status
+  LoginController loginController = Get.put(LoginController());
   ApiCallStatus apiCallStatus = ApiCallStatus.holding;
 
   // getting data from api
@@ -28,9 +29,12 @@ class CommandeViewController extends GetxController {
 
   getCommandes() async {
     Logger().i("commandesList.length");
+    Logger().i("commandesList.length");
     try {
-      var commandesData = await fireStorDB.getListDocuments(
-          Constants.commandesCollection, true);
+      var commandesData = await fireStorDB.getFiltredDocuments(
+          collection: Constants.commandesCollection,
+          field: "clientId",
+          condition: loginController.appUser!.id);
       for (var element in commandesData) {
         commandesList.add(CommandModel.fromMap(element));
       }

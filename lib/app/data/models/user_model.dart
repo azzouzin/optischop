@@ -9,8 +9,9 @@ class UserModel {
   String? phoneNumber;
   String? imageUrl;
   String? password;
-  String state;
-  String municipality;
+  String? state;
+  String? municipality;
+  String uid;
   String? fcmToken;
 
   UserModel({
@@ -20,6 +21,7 @@ class UserModel {
     this.password,
     required this.state,
     required this.municipality,
+    required this.uid,
     required this.imageUrl,
     this.fcmToken,
   });
@@ -27,12 +29,12 @@ class UserModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'username': username,
-      'phoneNumber': phoneNumber,
+      'fullName': username,
+      'phone': phoneNumber,
       //'password': password,
-      'state': state,
+      'address': state,
       'imageUrl': imageUrl,
-      'municipality': municipality,
+      'state': municipality,
       'fcmToken': fcmToken,
     };
   }
@@ -41,13 +43,14 @@ class UserModel {
     Logger().w(map);
     return UserModel(
       id: map['id'] as String,
-      username: map['username'] as String?,
+      username: map['fullName'] as String?,
       imageUrl: map['imageUrl'] as String?,
-      phoneNumber: map['phoneNumber'] as String?,
+      phoneNumber: map['phone'] as String?,
       password: map['password'] != null ? map['password'] as String : null,
-      state: map['state'] as String,
-      municipality: map['municipality'] as String,
+      state: map['address'] as String,
+      municipality: map['municipality'] as String?,
       fcmToken: map['fcmToken'] as String?,
+      uid: map['uid'] as String,
     );
   }
 

@@ -64,7 +64,7 @@ class LoginController extends GetxController {
   }
 
   void logout() {
-    _authServices.signout().then((value) => Get.toNamed(Routes.Login));
+    _authServices.signout().then((value) => Get.offAndToNamed(Routes.Login));
   }
 
   void updateAppUserData(UserModel myappUser) {

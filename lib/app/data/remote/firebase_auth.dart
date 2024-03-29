@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:getx_skeleton/utils/constants.dart';
 import 'package:logger/logger.dart';
 
 import '../models/user_model.dart';
@@ -8,9 +9,9 @@ class AuthServices {
   User? checkCurrentUser() {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-   //   Logger().i(user.email);
+      //   Logger().i(user.email);
     } else {
-     // Logger().w("FireBase User = NULL");
+      // Logger().w("FireBase User = NULL");
     }
     return user;
   }
@@ -79,23 +80,27 @@ class AuthServices {
   }
 
   Future<UserModel> fetchUserData(String userId) async {
-   // Logger().i(userId);
+    // Logger().i(userId);
 
     return await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
+        .collection(Constants.usersCollection)
+        .where("uid", isEqualTo: userId)
         .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      UserModel userData =
-          UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
-      // Use the fetched user data here
-      print('User data: ${userData.id}');
-      return userData;
+        .then((value) {
+      return UserModel.fromMap(value.docs.first.data());
     }).catchError((error) {
       Logger().e('Error fetching user data: $error');
       throw error;
     });
   }
+
+  /*then((DocumentSnapshot documentSnapshot) {
+      UserModel userData =
+          UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+      // Use the fetched user data here
+      print('User data: ${userData.id}');
+      return userData;
+    }*/
 }
 /*.catchError((error) {
       Logger().e('Error fetching user data: $error');

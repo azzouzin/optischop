@@ -18,7 +18,7 @@ class LocalizationService extends Translations {
 
   // default language
   // todo change the default language
-  static Locale defaultLanguage = supportedLanguages['en']!;
+  static Locale defaultLanguage = supportedLanguages['ar']!;
 
   // supported languages
   static Map<String, Locale> supportedLanguages = {
