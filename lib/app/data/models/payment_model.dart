@@ -25,7 +25,7 @@ class Payment {
     return Payment(
       id: map['id'] as String,
       clientId: map['clientId'] as String,
-      amount: map['amount'] as double,
+      amount: double.parse(map['amount'].toString()),
       dateTime: DateTime.fromMillisecondsSinceEpoch(
           map['dateTime'].millisecondsSinceEpoch),
     );

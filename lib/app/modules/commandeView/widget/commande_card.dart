@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/routes/app_pages.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
 import '../../../data/models/command_model.dart';
@@ -71,13 +72,13 @@ class CommandeCard extends StatelessWidget {
             ),
             8.verticalSpace,
             ticketDetailsWidget(
-              "Destination",
+              Strings.destination.tr,
               commandModel.deliveryAddress ?? "",
-              "Total",
+              Strings.total.tr,
               "${commandModel.prixTotal}" + " DA",
-              "Date",
+              Strings.orderDate.tr,
               commandModel.dateTime.toString().substring(0, 9),
-              "Heur",
+              Strings.time.tr,
               commandModel.dateTime.toString().substring(11, 16),
             ),
             16.verticalSpace,
@@ -92,7 +93,7 @@ class CommandeCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  commandModel.getStatus(),
+                  CommandModel.toStringToDisplay(commandModel.status),
                   style: Get.textTheme.bodyLarge!.copyWith(
                     color: getColor(commandModel.status),
                   ),

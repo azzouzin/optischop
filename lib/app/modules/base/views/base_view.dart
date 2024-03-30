@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/commandeView/commandeview_view.dart';
 
@@ -33,58 +32,61 @@ class BaseView extends GetView<BaseController> {
             ],
           ),
         ),
-        bottomNavigationBar: Container(
-          padding: EdgeInsets.only(top: 10.h, bottom: 20.h),
-          decoration: BoxDecoration(
-            color: theme.scaffoldBackgroundColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25.r),
-              topRight: Radius.circular(25.r),
-            ),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black38,
-                spreadRadius: 0,
-                blurRadius: 10,
+        bottomNavigationBar: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Container(
+            padding: EdgeInsets.only(top: 10.h, bottom: 20.h),
+            decoration: BoxDecoration(
+              color: theme.scaffoldBackgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.r),
+                topRight: Radius.circular(25.r),
               ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25.r),
-              topRight: Radius.circular(25.r),
-            ),
-            child: BottomNavigationBar(
-              currentIndex: controller.currentIndex,
-              type: BottomNavigationBarType.fixed,
-              elevation: 0.0,
-              backgroundColor: theme.scaffoldBackgroundColor,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              selectedFontSize: 0.0,
-              items: [
-                _mBottomNavItem(
-                  label: 'Home',
-                  icon: EvaIcons.home,
-                ),
-                _mBottomNavItem(
-                  label: 'Commandes',
-                  icon: Icons.history,
-                ),
-                _mBottomNavItem(
-                  label: 'Cart',
-                  icon: EvaIcons.shopping_cart,
-                ),
-                _mBottomNavItem(
-                  label: 'Notifications',
-                  icon: Icons.payment_outlined,
-                ),
-                _mBottomNavItem(
-                  label: 'Settings',
-                  icon: EvaIcons.settings_2,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black38,
+                  spreadRadius: 0,
+                  blurRadius: 10,
                 ),
               ],
-              onTap: controller.changeScreen,
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.r),
+                topRight: Radius.circular(25.r),
+              ),
+              child: BottomNavigationBar(
+                currentIndex: controller.currentIndex,
+                type: BottomNavigationBarType.fixed,
+                elevation: 0.0,
+                backgroundColor: theme.scaffoldBackgroundColor,
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                selectedFontSize: 0.0,
+                items: [
+                  _mBottomNavItem(
+                    label: 'Home',
+                    icon: EvaIcons.home,
+                  ),
+                  _mBottomNavItem(
+                    label: 'Commandes',
+                    icon: Icons.history,
+                  ),
+                  _mBottomNavItem(
+                    label: 'Cart',
+                    icon: EvaIcons.shopping_cart,
+                  ),
+                  _mBottomNavItem(
+                    label: 'Notifications',
+                    icon: Icons.payment_outlined,
+                  ),
+                  _mBottomNavItem(
+                    label: 'Settings',
+                    icon: EvaIcons.settings_2,
+                  ),
+                ],
+                onTap: controller.changeScreen,
+              ),
             ),
           ),
         ),

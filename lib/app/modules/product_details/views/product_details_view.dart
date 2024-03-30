@@ -9,6 +9,7 @@ import 'package:getx_skeleton/app/components/custom_textfield.dart';
 import 'package:getx_skeleton/app/data/models/product_model.dart';
 import 'package:getx_skeleton/app/modules/product_details/views/widgets/rounded_button.dart';
 import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/custom_button.dart';
@@ -102,14 +103,14 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                           children: [
                             InkWell(
                               onTap: () => _controller.previousPage(),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_ios,
                                 color: Colors.white,
                               ),
                             ),
                             InkWell(
                               onTap: () => _controller.nextPage(),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_forward_ios,
                                 color: Colors.white,
                               ),
@@ -194,7 +195,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                   child: Row(
                     children: [
                       Text(
-                        'Quantity :',
+                        Strings.quantity.tr,
                         style: theme.textTheme.bodyMedium?.copyWith(
                             fontSize: 18.sp, fontWeight: FontWeight.bold),
                       ).animate().fade().slideX(
@@ -296,7 +297,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                   child:
                       GetBuilder<ProductDetailsController>(builder: (context) {
                     return CustomButton(
-                      text: 'Add to Cart',
+                      text: Strings.addToCart.tr,
                       onPressed: () => controller.onAddToCartPressed(product),
                       disabled: controller.qtyController.text.isEmpty ||
                           controller.qtyController.text == "0",
@@ -330,7 +331,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
       child: Row(
         children: [
           Text(
-            'Price :',
+            Strings.prix.tr,
             style: theme.textTheme.bodyMedium
                 ?.copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
           ).animate().fade().slideX(
@@ -371,7 +372,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
       child: Row(
         children: [
           Text(
-            'Price :',
+            Strings.prix.tr,
             style: theme.textTheme.bodyMedium
                 ?.copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
           ).animate().fade().slideX(

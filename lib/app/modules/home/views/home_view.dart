@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/home/views/widgets/category_card.dart';
 import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../../../components/product_item.dart';
 import '../../../components/screen_title.dart';
 import '../controllers/home_controller.dart';
@@ -29,7 +30,7 @@ class HomeView extends GetView<HomeController> {
               : ListView(
                   children: [
                     15.verticalSpace,
-                    const ScreenTitle(title: 'Home'),
+                     ScreenTitle(title: Strings.home.tr),
                     Text(
                       "Category",
                       style: context.theme.textTheme.displayMedium!,

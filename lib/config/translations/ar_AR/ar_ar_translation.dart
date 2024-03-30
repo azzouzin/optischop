@@ -32,7 +32,14 @@ const Map<String, String> arAR = {
   Strings.password: 'كلمة المرور',
 
   // Order Strings
+  Strings.cart: "السلة",
+  Strings.time: "الوقت",
+
   Strings.commandStatusNew: 'طلب جديد',
+  Strings.commandStatusValidated: 'تم التحقق من الطلب',
+  Strings.unite: 'الوحدة',
+  Strings.addToCart: 'إضافة ألى السلة',
+  Strings.home: 'الرئيسية',
   Strings.commandStatusInProgress: 'الطلب قيد التنفيذ',
   Strings.commandStatusDelivered: 'تم تسليم الطلب',
   Strings.commandStatusCancelled: 'تم إلغاء الطلب',
@@ -50,5 +57,10 @@ const Map<String, String> arAR = {
   Strings.destination: 'الوجهة',
   Strings.noProductInYourCartYet: 'لا توجد منتجات في سلتك حتى الآن',
   Strings.darkmode: 'الوضع المظلم',
+  Strings.account: 'الحساب',
   Strings.contactus: 'اتصل بنا',
+  Strings.settings: 'الاعدادات',
+  Strings.payments: "المدفوعات",
+  Strings.details: "التفاصيل",
+  Strings.category: "الاقسام",
 };

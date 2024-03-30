@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getx_skeleton/app/modules/notifications/views/widgets/ticket_data.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 import 'package:get/get.dart';
 
@@ -19,8 +20,8 @@ class NotificationsView extends GetView<NotificationsController> {
         child: ListView(
           children: [
             15.verticalSpace,
-            const ScreenTitle(
-              title: 'Payments',
+            ScreenTitle(
+              title: Strings.payments.tr,
               dividerEndIndent: 150,
             ),
             10.verticalSpace,

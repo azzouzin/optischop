@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../../components/screen_title.dart';
 import 'commandeview_controller.dart';
 import 'widget/commande_card.dart';
@@ -21,8 +22,8 @@ class CommandeView extends StatelessWidget {
               15.verticalSpace,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0.w),
-                child: const ScreenTitle(
-                  title: 'Commandes',
+                child: ScreenTitle(
+                  title: Strings.orders.tr,
                   dividerEndIndent: 280,
                 ),
               ),

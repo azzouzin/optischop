@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/components/custom_textfield.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/custom_button.dart';
@@ -25,13 +26,13 @@ class CartView extends GetView<CartController> {
           builder: (_) => ListView(
             children: [
               15.verticalSpace,
-              const ScreenTitle(
-                title: 'Cart',
+              ScreenTitle(
+                title: Strings.cart.tr,
                 dividerEndIndent: 280,
               ),
               20.verticalSpace,
               controller.products.isEmpty
-                  ? const NoData(text: 'No Products in Your Cart Yet!')
+                  ? NoData(text: Strings.noProductInYourCartYet.tr)
                   : ListView.builder(
                       itemCount: controller.products.length,
                       itemBuilder: (context, index) => CartItem(
@@ -73,7 +74,7 @@ class CartView extends GetView<CartController> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Total:',
+                        Text(Strings.total.tr,
                             style: theme.textTheme.bodyLarge?.copyWith(
                               fontSize: 18.sp,
                             )),

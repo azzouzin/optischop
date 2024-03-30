@@ -1,9 +1,11 @@
 class Strings {
   static const String hello = 'hello';
   static const String loading = 'loading';
+  static const String settings = 'settings';
 
   static const String changeTheme = 'change_theme';
   static const String changeLanguage = 'change_language';
+  static const String category = 'category';
 
   static const String noInternetConnection = 'no internet connection';
   static const String serverNotResponding = 'server not responding';
@@ -20,8 +22,12 @@ class Strings {
   static const String someThingErrorPleaseTryAgain =
       'Some thing error please try again';
 
-      // User Strings
+  // User Strings
 
+  static const String time = 'time';
+  static const String home = 'home';
+  static const String cart = 'cart';
+  static const String addToCart = 'add to cart';
   static const String username = 'username';
   static const String useremail = 'useremail';
   static const String userphone = 'userphone';
@@ -31,7 +37,6 @@ class Strings {
   static const String useraddress = 'useraddress';
   static const String userimageUrl = 'userimageUrl';
   static const String userfcmToken = 'userfcmToken';
-
 
   //Auth Strings
   static const String login = 'login';
@@ -50,7 +55,6 @@ class Strings {
   static const String dontHaveAnAccount = "Don't have an account?";
   static const String or = 'or';
 
-
   // Order Strings
   static const String order = 'Commande';
   static const String orders = 'Commandes';
@@ -59,18 +63,22 @@ class Strings {
   static const String orderDate = 'Date de commande';
   static const String orderStatus = 'Statut de la commande';
   static const String ajouterCommande = 'ajouter une commande';
- 
+
   static const String prix = 'Prix';
   static const String quantity = 'Quantité';
+  static const String unite = 'unite';
   static const String total = 'Total';
   static const String payment = 'Paiement';
+  static const String payments = 'Les paiements';
   static const String paymentStatus = 'Statut du paiement';
   static const String paymentDate = 'Date de paiement';
   static const String paymentAmount = 'Montant du paiement';
+  
   static const String products = 'Produits';
   static const String ajouterAuPanier = 'Ajouter au panier';
 
   static const String destination = 'Déstination';
+  static const String details= 'Details';
   static const String deliveryAddress = 'Adresse de livraison';
   static const String commandStatusNew = 'nouvelle';
   static const String commandStatusInProgress = 'en cours';
@@ -83,14 +91,4 @@ class Strings {
   static const String language = 'Langue';
   static const String contactus = 'Contactez-nous';
   static const String account = 'Compte';
-
-
-
-
-
-  
-
-   
-
-
 }

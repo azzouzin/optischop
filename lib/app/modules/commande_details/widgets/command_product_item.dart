@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../data/models/product_model.dart';
 
@@ -57,13 +58,13 @@ class ProductCommandeItem extends StatelessWidget {
                 ),
               ),
               5.verticalSpace,
-              Text('Unité : ${product.unit ?? ""}',
+              Text('${Strings.unite.tr} : ${product.unit ?? ""}',
                   style: theme.textTheme.bodyMedium),
               5.verticalSpace,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text('Qte : ${product.quantity}',
+                  Text('${Strings.quantity} : ${product.quantity}',
                       style: theme.textTheme.displaySmall),
                   10.horizontalSpace,
                   Text('${product.type ?? ""}',

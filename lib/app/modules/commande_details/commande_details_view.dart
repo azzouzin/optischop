@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/product_model.dart';
 import 'package:getx_skeleton/app/modules/commande_details/widgets/command_product_item.dart';
 import 'package:getx_skeleton/app/modules/home/controllers/home_controller.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
 import '../../../utils/constants.dart';
@@ -30,8 +31,8 @@ class CommandeDetailsView extends StatelessWidget {
             child: Column(
               children: [
                 15.verticalSpace,
-                const ScreenTitle(
-                  title: 'Details',
+                ScreenTitle(
+                  title: Strings.details.tr,
                   dividerEndIndent: 280,
                 ),
                 5.verticalSpace,
@@ -46,7 +47,7 @@ class CommandeDetailsView extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      commandeModel.getStatus(),
+                      CommandModel.toStringToDisplay(commandeModel.status),
                       style: Get.textTheme.bodyLarge!.copyWith(
                         color: getColor(commandeModel.status),
                       ),
@@ -94,7 +95,7 @@ class CommandeDetailsView extends StatelessWidget {
                           ),
                           5.verticalSpace,
                           Text(
-                            'FREE',
+                            'TTC',
                             style: Get.theme.textTheme.displaySmall?.copyWith(
                               color: Colors.white,
                             ),
@@ -106,7 +107,7 @@ class CommandeDetailsView extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Total:',
+                        Text(Strings.total.tr,
                             style: Get.theme.textTheme.bodyLarge?.copyWith(
                               fontSize: 18.sp,
                             )),
@@ -154,10 +155,12 @@ class CommandeDetailsView extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Déstination:',
-                            style: Get.theme.textTheme.bodyLarge?.copyWith(
-                              fontSize: 18.sp,
-                            )),
+                        Text(
+                          Strings.destination.tr,
+                          style: Get.theme.textTheme.bodyLarge?.copyWith(
+                            fontSize: 18.sp,
+                          ),
+                        ),
                         10.verticalSpace,
                         SizedBox(
                           width: 250.w,

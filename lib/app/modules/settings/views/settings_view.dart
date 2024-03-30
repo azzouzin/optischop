@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/login/login_controller.dart';
+import 'package:getx_skeleton/config/translations/localization_service.dart';
 import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../../utils/constants.dart';
@@ -22,13 +23,13 @@ class SettingsView extends GetView<SettingsController> {
         child: ListView(
           children: [
             15.verticalSpace,
-            const ScreenTitle(
-              title: 'Settings',
+            ScreenTitle(
+              title: Strings.settings.tr,
               dividerEndIndent: 230,
             ),
             20.verticalSpace,
             Text(
-              'Account',
+              Strings.account.tr,
               style: theme.textTheme.displayMedium?.copyWith(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.normal,
@@ -42,25 +43,29 @@ class SettingsView extends GetView<SettingsController> {
               phone: loginController.appUser!.phoneNumber!,
             ),
             30.verticalSpace,
-            Text('Settings',
+            Text(Strings.settings.tr,
                 style: theme.textTheme.displayMedium?.copyWith(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.normal,
                 )),
             20.verticalSpace,
             SettingsItem(
-              title: 'Dark Mode',
+              title: Strings.darkmode.tr,
               icon: Constants.themeIcon,
               isDark: true,
             ),
             25.verticalSpace,
             SettingsItem(
-              title: 'Language',
-              icon: Constants.languageIcon,
-            ),
+                title: Strings.changeLanguage.tr,
+                icon: Constants.languageIcon,
+                onTap: () {
+                  LocalizationService.updateLanguage(
+                      Get.locale!.languageCode == "en" ? "ar" : "en");
+                  ;
+                }),
             25.verticalSpace,
             SettingsItem(
-              title: 'Help',
+              title: Strings.contactus.tr,
               icon: Constants.helpIcon,
             ),
             25.verticalSpace,
