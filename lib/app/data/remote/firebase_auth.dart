@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:getx_skeleton/app/data/remote/firestore_db.dart';
 import 'package:getx_skeleton/utils/constants.dart';
 import 'package:logger/logger.dart';
 
 import '../models/user_model.dart';
 
 class AuthServices {
+  FireStorDB _fireStorDB = FireStorDB();
   User? checkCurrentUser() {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
@@ -92,6 +94,23 @@ class AuthServices {
       Logger().e('Error fetching user data: $error');
       throw error;
     });
+  }
+
+  Future changePassword(String newPassword, String oldPassword) async {
+    try {
+      User user = FirebaseAuth.instance.currentUser!;
+      await user.reauthenticateWithCredential(
+        EmailAuthProvider.credential(
+          email: user.email!,
+          password: oldPassword,
+        ),
+      );
+      await user.updatePassword(newPassword);
+      // Password updated successfully!
+      Logger().i('Password updated successfully!');
+    } on FirebaseAuthException catch (e) {
+      rethrow;
+    }
   }
 
   /*then((DocumentSnapshot documentSnapshot) {

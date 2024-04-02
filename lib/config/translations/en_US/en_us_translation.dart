@@ -56,6 +56,11 @@ const Map<String, String> enUs = {
   Strings.commandStatusCancelled: 'Annulée',
   Strings.orders: 'Commandes',
   Strings.prix: 'Prix',
+  Strings.changePassword: 'Changer le mot de passe',
+  Strings.oldPassword: 'Mot de passe',
+  Strings.newPassword: 'Nouveau mot de passe',
+  Strings.confirmPassword: 'Confirmer le mot de passe',
+  Strings.submit: 'Envoyer',
 
   Strings.ajouterCommande: 'Ajouter une commande',
   Strings.quantity: 'Quantité',

@@ -8,6 +8,7 @@ import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 import 'package:getx_skeleton/utils/constants.dart';
 import 'package:logger/logger.dart';
 
+import '../../../components/custom_snackbar.dart';
 import '../../../data/models/user_model.dart';
 //import '../../../data/remote/auth_services.dart';
 import '../../../data/remote/firebase_auth.dart';
@@ -30,11 +31,18 @@ class SplashController extends GetxController {
     if (user == null) {
       Get.offNamed(Routes.Login);
     } else {
-      UserModel appUser = await _authServices.fetchUserData(user!.uid);
-    //  Logger().i("User Alerady Logged in");
-     // Logger().i(appUser.id);
-      loginController.updateAppUserData(appUser);
-      Get.offNamed(Routes.BASE);
+      try {
+        UserModel appUser = await _authServices.fetchUserData(user!.uid);
+        //  Logger().i("User Alerady Logged in");
+        // Logger().i(appUser.id);
+        loginController.updateAppUserData(appUser);
+        Get.offNamed(Routes.BASE);
+      } catch (e) {
+        CustomSnackBar.showCustomErrorSnackBar(
+          title: "FireStore Error",
+          message: "Please Clear App Data and try again",
+        );
+      }
     }
   }
 

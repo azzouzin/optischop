@@ -5,7 +5,9 @@ class Strings {
 
   static const String changeTheme = 'change_theme';
   static const String changeLanguage = 'change_language';
+  static const String changePassword = 'change_password';
   static const String category = 'category';
+  static const String submit = 'submit';
 
   static const String noInternetConnection = 'no internet connection';
   static const String serverNotResponding = 'server not responding';
@@ -13,6 +15,9 @@ class Strings {
   static const String apiNotFound = 'api not found';
   static const String serverError = 'Server error';
   static const String urlNotFound = 'Url not found';
+  static const String oldPassword = 'Old Password';
+  static const String newPassword = 'New Password';
+  static const String confirmPassword = 'Confirm Password';
 
   static const String retry = 'retry';
   static const String internetError = 'internet error';
@@ -50,7 +55,6 @@ class Strings {
   static const String sendResetLink = 'Send reset link';
   static const String email = 'Email';
   static const String password = 'Password';
-  static const String confirmPassword = 'Confirm Password';
   static const String alreadyHaveAnAccount = 'Already have an account?';
   static const String dontHaveAnAccount = "Don't have an account?";
   static const String or = 'or';
@@ -73,12 +77,12 @@ class Strings {
   static const String paymentStatus = 'Statut du paiement';
   static const String paymentDate = 'Date de paiement';
   static const String paymentAmount = 'Montant du paiement';
-  
+
   static const String products = 'Produits';
   static const String ajouterAuPanier = 'Ajouter au panier';
 
   static const String destination = 'Déstination';
-  static const String details= 'Details';
+  static const String details = 'Details';
   static const String deliveryAddress = 'Adresse de livraison';
   static const String commandStatusNew = 'nouvelle';
   static const String commandStatusInProgress = 'en cours';

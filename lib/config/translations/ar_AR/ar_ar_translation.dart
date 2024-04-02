@@ -58,6 +58,12 @@ const Map<String, String> arAR = {
   Strings.noProductInYourCartYet: 'لا توجد منتجات في سلتك حتى الآن',
   Strings.darkmode: 'الوضع المظلم',
   Strings.account: 'الحساب',
+  Strings.changePassword: 'تغيير كلمة المرور',
+  Strings.oldPassword : 'كلمة المرور',
+  Strings.newPassword : 'كلمة مرور جديدة',
+  Strings.confirmPassword : 'تأكيد كلمة المرور',
+  Strings.submit: 'إرسال',
+
   Strings.contactus: 'اتصل بنا',
   Strings.settings: 'الاعدادات',
   Strings.payments: "المدفوعات",

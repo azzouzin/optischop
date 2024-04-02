@@ -6,6 +6,7 @@ import 'package:logger/logger.dart';
 class UserModel {
   String id;
   String? username;
+  String? email;
   String? phoneNumber;
   String? imageUrl;
   String? password;
@@ -18,6 +19,7 @@ class UserModel {
     required this.username,
     required this.id,
     required this.phoneNumber,
+    required this.email,
     this.password,
     required this.state,
     required this.municipality,
@@ -45,9 +47,10 @@ class UserModel {
       id: map['id'] as String,
       username: map['fullName'] as String?,
       imageUrl: map['imageUrl'] as String?,
+      email: map['username'] + "@gmail.com" as String?,
       phoneNumber: map['phone'] as String?,
       password: map['password'] != null ? map['password'] as String : null,
-      state: map['address'] as String,
+      state: map['address'] as String?,
       municipality: map['municipality'] as String?,
       fcmToken: map['fcmToken'] as String?,
       uid: map['uid'] as String,
