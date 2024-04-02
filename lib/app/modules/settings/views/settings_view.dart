@@ -71,28 +71,25 @@ class SettingsView extends GetView<SettingsController> {
                 showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                          insetPadding: EdgeInsets.all(5),
-                          contentPadding: EdgeInsets.all(8),
+                          insetPadding: const EdgeInsets.all(5),
+                          contentPadding: const EdgeInsets.all(8),
                           title: Text(Strings.contactus.tr),
-                          content: Container(
-                            width: Get.width,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                callRow("0550027733", () {
-                                  lunchNumber("0550027733");
-                                }, Icons.call),
-                                callRow("0550027732", () {
-                                  lunchNumber("0550027732");
-                                }, Icons.call),
-                                callRow("0770803003", () {
-                                  lunchNumber("0770803003");
-                                }, Icons.call),
-                                callRow("sarl.iampacking@gmail.com", () {
-                                  lunchemail("sarl.iampacking@gmail.com");
-                                }, Icons.email),
-                              ],
-                            ),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              callRow("0550027733", () {
+                                lunchNumber("0550027733");
+                              }, Icons.call),
+                              callRow("0550027732", () {
+                                lunchNumber("0550027732");
+                              }, Icons.call),
+                              callRow("0770803003", () {
+                                lunchNumber("0770803003");
+                              }, Icons.call),
+                              callRow("sarl.iampacking@gmail.com", () {
+                                lunchemail("sarl.iampacking@gmail.com");
+                              }, Icons.email),
+                            ],
                           ),
                         ));
               },
@@ -121,7 +118,7 @@ class SettingsView extends GetView<SettingsController> {
             style: Get.textTheme.bodyLarge,
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(shape: CircleBorder()),
+            style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             onPressed: () {
               onTap();
             },
