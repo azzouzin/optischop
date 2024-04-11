@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class LightThemeColors {
   //dark swatch
 
-  static const Color primaryColor = Color(0xFF3D9751);
-  static const Color accentColor = Color(0xFF182470);
+  static const Color primaryColor = Color.fromARGB(255, 5, 4, 67);
+  static const Color accentColor = Color.fromARGB(255, 178, 47, 208);
 
   //APPBAR
   static const Color appBarColor = primaryColor;

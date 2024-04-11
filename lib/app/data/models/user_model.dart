@@ -47,7 +47,7 @@ class UserModel {
       id: map['id'] as String,
       username: map['fullName'] as String?,
       imageUrl: map['imageUrl'] as String?,
-      email: map['username'] + "@gmail.com" as String?,
+      email: map['fullName'] + "@gmail.com" as String?,
       phoneNumber: map['phone'] as String?,
       password: map['password'] != null ? map['password'] as String : null,
       state: map['address'] as String?,

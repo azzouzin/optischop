@@ -35,7 +35,7 @@ Future<void> main() async {
       builder: (context, widget) {
         return GetMaterialApp(
           useInheritedMediaQuery: true,
-          title: "IamPack",
+          title: "Glasses Sell",
           debugShowCheckedModeBanner: false,
           builder: (context, widget) {
             bool themeIsLight = SharedPref.getThemeIsLight();

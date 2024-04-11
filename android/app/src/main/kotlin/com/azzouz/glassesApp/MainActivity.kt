@@ -1,4 +1,4 @@
-package iampack.azzouz.com
+package com.azzouz.glassesApp
 
 import io.flutter.embedding.android.FlutterActivity
 

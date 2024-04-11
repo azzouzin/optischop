@@ -64,7 +64,7 @@ class CommandModel {
         return Status.Validated;
       case "Shipped":
         return Status.Shipped;
-      case "Deliverd":
+      case "Delivered":
         return Status.Deliverd;
       case "Canceled":
         return Status.Canceled;
