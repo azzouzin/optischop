@@ -1,4 +1,4 @@
-package com.azzouz.glassesApp
+package com.azzouz.opticshop
 
 import io.flutter.embedding.android.FlutterActivity
 

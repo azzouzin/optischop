@@ -27,7 +27,7 @@ class BaseView extends GetView<BaseController> {
               HomeView(),
               CommandeView(),
               CartView(),
-              const NotificationsView(),
+              //   const NotificationsView(),
               SettingsView()
             ],
           ),
@@ -76,10 +76,10 @@ class BaseView extends GetView<BaseController> {
                     label: 'Cart',
                     icon: EvaIcons.shopping_cart,
                   ),
-                  _mBottomNavItem(
+                  /* _mBottomNavItem(
                     label: 'Notifications',
                     icon: Icons.payment_outlined,
-                  ),
+                  ),*/
                   _mBottomNavItem(
                     label: 'Settings',
                     icon: EvaIcons.settings_2,
