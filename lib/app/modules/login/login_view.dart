@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/components/custom_button.dart';
-import 'package:getx_skeleton/config/theme/my_spaces.dart';
-
 import '../../components/custom_textfield.dart';
-import '../../data/remote/api_call_status.dart';
 import './login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -25,13 +22,13 @@ class LoginView extends GetView<LoginController> {
                   //mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    verticalSpaceSmall,
+                    16.verticalSpace,
                     Center(
                         child: SizedBox(
                             width: 250.w,
                             height: 250.w,
                             child: Image.asset("assets/images/loginbg.png"))),
-                    verticalSpaceLarge,
+                    32.verticalSpace,
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 0.w),
                       child: Column(
@@ -47,7 +44,7 @@ class LoginView extends GetView<LoginController> {
                             phoneValidation: controller.phoneValidation,
                             onChanged: controller.validatePhone,
                           ),
-                          verticalSpaceMedium,
+                          22.verticalSpace,
                           CustomTextField(
                             isTransparent: false,
                             obscureText: true,
@@ -68,7 +65,6 @@ class LoginView extends GetView<LoginController> {
                       onPressed: () {
                         controller.login();
                       },
-                 
                     )
                   ],
                 ),

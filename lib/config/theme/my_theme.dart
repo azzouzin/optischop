@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../app/data/local/shared_pref.dart';
-import 'dark_theme_colors.dart';
 import 'light_theme_colors.dart';
 import 'my_styles.dart';
 
@@ -24,30 +20,14 @@ class MyTheme {
       cardColor: LightThemeColors.cardColor,
       hintColor: LightThemeColors.hintTextColor,
      
-      dividerTheme:
-          const DividerThemeData(color: LightThemeColors.dividerColor),
-    
+   
       scaffoldBackgroundColor: LightThemeColors.scaffoldBackgroundColor,
 
-
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
-          color: LightThemeColors.primaryColor),
-
-
-      appBarTheme: MyStyles.getAppBarTheme(isLightTheme: isLight),
-
-
-      elevatedButtonTheme:
-          MyStyles.getElevatedButtonTheme(isLightTheme: isLight),
 
 
       textTheme: MyStyles.getTextTheme(isLightTheme: isLight),
 
 
-      chipTheme: MyStyles.getChipTheme(isLightTheme: isLight),
-
-  
-      iconTheme: MyStyles.getIconTheme(isLightTheme: isLight),
     );
   }
 }

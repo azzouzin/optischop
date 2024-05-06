@@ -3,10 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getx_skeleton/app/components/custom_snackbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/components/custom_snackbar.dart';
 import 'package:getx_skeleton/app/modules/login/login_controller.dart';
 import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
-import 'package:getx_skeleton/config/translations/localization_service.dart';
 import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../../utils/constants.dart';
@@ -66,8 +64,7 @@ class SettingsView extends GetView<SettingsController> {
                 title: Strings.changeLanguage.tr,
                 icon: Constants.languageIcon,
                 onTap: () {
-                  LocalizationService.updateLanguage(
-                      Get.locale!.languageCode == "en" ? "ar" : "en");
+               
                 }),
             25.verticalSpace,
             SettingsItem(

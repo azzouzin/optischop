@@ -70,10 +70,6 @@ class BaseView extends GetView<BaseController> {
                     icon: EvaIcons.shopping_cart,
                   ),
                   _mBottomNavItem(
-                    label: 'Notifications',
-                    icon: Icons.payment_outlined,
-                  ),
-                  _mBottomNavItem(
                     label: 'Settings',
                     icon: EvaIcons.settings_2,
                   ),

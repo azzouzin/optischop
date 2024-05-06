@@ -49,12 +49,12 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       id: map['id'] != null ? map['id'] as String : null,
-      images: map['imageUrls'] != null
-          ? map['imageUrls'].isEmpty
+      images: map['imagUrls'] != null
+          ? map['imagUrls'].isEmpty
               ? [
                   "https://firebasestorage.googleapis.com/v0/b/eurlplast.appspot.com/o/Realistic-Plastic-Cup-Mockup-PSD-Graphics-5854492-1.jpg?alt=media&token=e5d205cf-d279-46c8-9ee3-7ab1b608234d"
                 ]
-              : List<String>.from((map['imageUrls']))
+              : List<String>.from((map['imagUrls']))
           : null,
       name: map['label'] != null ? map['label'] as String : null,
       quantity: 0,
