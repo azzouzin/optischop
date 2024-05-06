@@ -9,7 +9,6 @@ import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../components/custom_button.dart';
-import '../../../components/no_data.dart';
 import '../../../components/screen_title.dart';
 import '../controllers/cart_controller.dart';
 import 'widgets/cart_item.dart';
@@ -32,7 +31,7 @@ class CartView extends GetView<CartController> {
               ),
               20.verticalSpace,
               controller.products.isEmpty
-                  ? NoData(text: Strings.noProductInYourCartYet.tr)
+                  ?Container()
                   : ListView.builder(
                       itemCount: controller.products.length,
                       itemBuilder: (context, index) => CartItem(
@@ -159,14 +158,9 @@ class CartView extends GetView<CartController> {
                   child: CustomButton(
                     text: 'Purchase Now',
                     onPressed: () => controller.onPurchaseNowPressed(),
-                    fontSize: 16.sp,
+                 
                     radius: 12.r,
-                    verticalPadding: 12.h,
-                    hasShadow: true,
-                    shadowColor: theme.primaryColor,
-                    shadowOpacity: 0.3,
-                    shadowBlurRadius: 4,
-                    shadowSpreadRadius: 0,
+                 
                   ).animate().fade().slideY(
                         duration: const Duration(milliseconds: 300),
                         begin: 1,

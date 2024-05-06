@@ -7,7 +7,6 @@ import 'package:icons_plus/icons_plus.dart';
 import '../controllers/base_controller.dart';
 import '../../cart/views/cart_view.dart';
 import '../../home/views/home_view.dart';
-import '../../notifications/views/notifications_view.dart';
 import '../../settings/views/settings_view.dart';
 
 class BaseView extends GetView<BaseController> {
@@ -23,13 +22,7 @@ class BaseView extends GetView<BaseController> {
           bottom: false,
           child: IndexedStack(
             index: controller.currentIndex,
-            children: [
-              HomeView(),
-              CommandeView(),
-              CartView(),
-              const NotificationsView(),
-              SettingsView()
-            ],
+            children: [HomeView(), CommandeView(), CartView(), SettingsView()],
           ),
         ),
         bottomNavigationBar: Directionality(

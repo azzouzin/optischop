@@ -68,9 +68,7 @@ class LoginView extends GetView<LoginController> {
                       onPressed: () {
                         controller.login();
                       },
-                      hasShadow: false,
-                      disabled:
-                          controller.apiCallStatus == ApiCallStatus.loading,
+                 
                     )
                   ],
                 ),

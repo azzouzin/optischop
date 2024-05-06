@@ -85,21 +85,8 @@ class CartItem extends GetView<CartController> {
               ),
             ],
           ),
-          const Spacer(),
-          InkWell(
-            onTap: () => controller.onDeletePressed(product.id!),
-            customBorder: const CircleBorder(),
-            child: Container(
-              padding: EdgeInsets.all(10.r),
-              child: SvgPicture.asset(
-                Constants.cancelIcon,
-                width: 20.w,
-                height: 20.h,
-                color: theme.textTheme.bodyMedium!.color,
-              ),
-            ),
-          ),
-        ],
+      
+         ],
       ),
     );
   }

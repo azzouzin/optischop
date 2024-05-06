@@ -7,7 +7,7 @@ import 'package:logger/logger.dart';
 import '../models/user_model.dart';
 
 class AuthServices {
-  FireStorDB _fireStorDB = FireStorDB();
+
   User? checkCurrentUser() {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
@@ -18,36 +18,7 @@ class AuthServices {
     return user;
   }
 
-  // SignUp with password and gmail
-  /* Future<UserCredential> signup(UserModel appUser) async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: appUser.email!, password: appUser.password!);
-      registerUserInfo(userCredential, appUser);
-      Logger().i(userCredential.credential?.token);
-      return userCredential;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        Logger().e('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        Logger().e('The account already exists for that email.');
-      }
-      rethrow; // Rethrow the exception to be handled by your app
-    }
-  }
-*/
-// Register User Info in database after signup
-  Future registerUserInfo(
-      UserCredential userCredential, UserModel appUser) async {
-    appUser.id = userCredential.user!.uid;
 
-    // Create a new document in Firestore with the user's information
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(appUser.id)
-        .set(appUser.toMap());
-  }
 
   Future<UserModel> signin(String email, String password) async {
     try {
@@ -65,19 +36,6 @@ class AuthServices {
         Logger().e('Wrong password provided for that user.');
       }
       rethrow; // Rethrow the exception to be handled by your app
-    }
-  }
-
-  Future<bool> signout() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    try {
-      await auth.signOut();
-      // Navigate to the login screen or other appropriate UI
-      return true;
-    } on FirebaseAuthException catch (e) {
-      // Handle exception appropriately (e.g., display an error message)
-      print('Error signing out: ${e.code}');
-      rethrow;
     }
   }
 
@@ -113,16 +71,5 @@ class AuthServices {
     }
   }
 
-  /*then((DocumentSnapshot documentSnapshot) {
-      UserModel userData =
-          UserModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
-      // Use the fetched user data here
-      print('User data: ${userData.id}');
-      return userData;
-    }*/
+
 }
-/*.catchError((error) {
-      Logger().e('Error fetching user data: $error');
-      return null;
-    });
-  */

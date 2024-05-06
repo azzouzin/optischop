@@ -84,13 +84,6 @@ class CartController extends GetxController {
     }
   }
 
-  /// when the user press on delete icon
-  onDeletePressed(String productId) {
-    var product = homeController.products.firstWhere((p) => p.id == productId);
-    product.quantity = 0;
-    getCartProducts();
-  }
-
   /// get the cart products from the product list
   getCartProducts() {
     products = homeController.products.where((p) => p.quantity! > 0).toList();

@@ -12,12 +12,6 @@ class SettingsController extends GetxController {
   SplashController splashController = Get.put(SplashController());
   AuthServices authServices = AuthServices();
 
-  /// change the system theme
-  changeTheme(bool value) {
-    MyTheme.changeTheme();
-    isLightTheme = SharedPref.getThemeIsLight();
-    update(['Theme']);
-  }
 
   Future changeUserPassword(String newPassword, String oldPassword) async {
     try {

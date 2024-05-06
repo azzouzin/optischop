@@ -160,7 +160,7 @@ class SettingsView extends GetView<SettingsController> {
             SettingsItem(
               title: Strings.logout.tr,
               icon: Constants.logoutIcon,
-              onTap: loginController.logout,
+              onTap: () {},
             ),
             20.verticalSpace,
           ],
@@ -188,6 +188,7 @@ class SettingsView extends GetView<SettingsController> {
       ),
     );
   }
+
   Padding callRow(String number, Function() onTap, IconData iconData) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),

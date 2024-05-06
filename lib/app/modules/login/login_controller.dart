@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:getx_skeleton/app/components/custom_snackbar.dart';
 import 'package:getx_skeleton/app/data/models/user_model.dart';
 import 'package:getx_skeleton/app/routes/app_pages.dart';
-import 'package:getx_skeleton/utils/fcm_helper.dart';
 import 'package:logger/logger.dart';
 
 import '../../data/remote/api_call_status.dart';
@@ -48,7 +47,6 @@ class LoginController extends GetxController {
       appUser = userModel;
       apiCallStatus = ApiCallStatus.success;
       update();
-      await FcmHelper().generateFcmToken();
       Get.toNamed(Routes.BASE);
       CustomSnackBar.showCustomSnackBar(
           title: "Welcome Back", message: "Welcome Back ${userModel.username}");
@@ -63,13 +61,10 @@ class LoginController extends GetxController {
     }
   }
 
-  void logout() {
-    _authServices.signout().then((value) => Get.offAndToNamed(Routes.Login));
-  }
 
   void updateAppUserData(UserModel myappUser) {
     appUser = myappUser;
-    print(appUser!.id);
+  
     update();
   }
 }
