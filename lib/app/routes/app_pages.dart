@@ -11,8 +11,6 @@ import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/notifications/bindings/notifications_binding.dart';
-import '../modules/notifications/views/notifications_view.dart';
 import '../modules/product_details/bindings/product_details_binding.dart';
 import '../modules/product_details/views/product_details_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
@@ -57,11 +55,6 @@ class AppPages {
       name: Routes.CART,
       page: () => CartView(),
       binding: CartBinding(),
-    ),
-    GetPage(
-      name: Routes.NOTIFICATIONS,
-      page: () => const NotificationsView(),
-      binding: NotificationsBinding(),
     ),
     GetPage(
       name: Routes.SETTINGS,

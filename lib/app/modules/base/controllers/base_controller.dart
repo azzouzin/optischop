@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import '../../../../utils/dummy_helper.dart';
 
 class BaseController extends GetxController {
 

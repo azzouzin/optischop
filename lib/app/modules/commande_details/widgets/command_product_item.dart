@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/config/translations/strings_enum.dart';
-
+import '../../../../config/translations/strings_enum.dart';
 import '../../../data/models/product_model.dart';
 
 class ProductCommandeItem extends StatelessWidget {

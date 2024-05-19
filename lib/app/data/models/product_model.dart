@@ -54,7 +54,7 @@ class ProductModel {
               ? [
                   "https://firebasestorage.googleapis.com/v0/b/glassessellapp.appspot.com/o/pexels-marcel-bro-5342002.jpg"
                 ]
-              : map['imagUrls'] as List
+              : List<String>.from((map['imagUrls']))
           : null,
       name: map['label'] != null ? map['label'] as String : null,
       quantity: 0,

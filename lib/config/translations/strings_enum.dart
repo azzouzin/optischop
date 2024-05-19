@@ -18,7 +18,8 @@ class Strings {
   static const String oldPassword = 'Old Password';
   static const String newPassword = 'New Password';
   static const String confirmPassword = 'Confirm Password';
-
+  static const String pueshaseNow = 'Purchase Now';
+ 
   static const String retry = 'retry';
   static const String internetError = 'internet error';
   static const String enterValidData = 'Enter valid data';

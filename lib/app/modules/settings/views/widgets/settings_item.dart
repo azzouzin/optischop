@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../../utils/constants.dart';
-import '../../controllers/settings_controller.dart';
-
 class SettingsItem extends StatelessWidget {
   final String title;
   final String icon;
@@ -47,16 +44,7 @@ class SettingsItem extends StatelessWidget {
           backgroundColor: theme.primaryColor,
           child: SvgPicture.asset(icon, fit: BoxFit.none),
         ),
-        trailing: isDark
-            ? GetBuilder<SettingsController>(
-                id: 'Theme',
-                builder: (controller) => CupertinoSwitch(
-                  value: !controller.isLightTheme,
-                  onChanged: controller.changeTheme,
-                  activeColor: theme.primaryColor,
-                ),
-              )
-            : Container(
+        trailing: Container(
                 width: 40.w,
                 height: 40.h,
                 decoration: BoxDecoration(

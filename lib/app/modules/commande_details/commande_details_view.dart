@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:getx_skeleton/app/data/models/product_model.dart';
 import 'package:getx_skeleton/app/modules/commande_details/widgets/command_product_item.dart';
 import 'package:getx_skeleton/app/modules/home/controllers/home_controller.dart';
-import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
+import '../../../config/translations/strings_enum.dart';
 import '../../../utils/constants.dart';
 import '../../components/screen_title.dart';
 import '../../data/models/command_model.dart';

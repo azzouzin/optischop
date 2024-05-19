@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../config/theme/dark_theme_colors.dart';
 import '../../config/theme/light_theme_colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -45,10 +44,7 @@ class CustomTextField extends StatelessWidget {
           controller: controller,
           keyboardType: textInputType,
           style: TextStyle(
-              fontSize: 15.w,
-              color: isTransparent
-                  ? LightThemeColors.backgroundColor
-                  : DarkThemeColors.accentColor),
+              fontSize: 15.w, color: LightThemeColors.displayTextColor),
           decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
               errorText: phoneValidation,
@@ -64,7 +60,7 @@ class CustomTextField extends StatelessWidget {
               hintText: label,
               hintStyle: TextStyle(
                   fontSize: 13,
-                  color: DarkThemeColors.accentColor.withOpacity(0.5)),
+                  color: LightThemeColors.accentColor.withOpacity(0.5)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(

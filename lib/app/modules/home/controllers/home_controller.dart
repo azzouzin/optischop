@@ -4,7 +4,6 @@ import 'package:getx_skeleton/app/data/remote/firestore_db.dart';
 import 'package:getx_skeleton/app/modules/splash/controllers/splash_controller.dart';
 import 'package:getx_skeleton/utils/constants.dart';
 
-import '../../../../utils/dummy_helper.dart';
 import '../../../data/models/product_model.dart';
 
 class HomeController extends GetxController {

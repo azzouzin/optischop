@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/components/custom_textfield.dart';
 import 'package:getx_skeleton/app/data/models/product_model.dart';
 import 'package:getx_skeleton/app/modules/product_details/views/widgets/rounded_button.dart';
 import 'package:getx_skeleton/config/theme/light_theme_colors.dart';
@@ -156,39 +155,9 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                   ),
                 ),
                 20.verticalSpace,
-                product.promoPrice == null
-                    ? normalPrice(theme)
-                    : promoPrice(theme),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-                //   child: Row(
-                //     children: [
-                //       Text(
-                //         '\$${product.price}',
-                //         style: theme.textTheme.displayMedium,
-                //       ),
-                //       30.horizontalSpace,
-                //       const Icon(Icons.star_rounded, color: Color(0xFFFFC542)),
-                //       5.horizontalSpace,
-                //       Text(
-                //         product.rating!.toString(),
-                //         style: theme.textTheme.bodyMedium?.copyWith(
-                //             fontSize: 18.sp, fontWeight: FontWeight.bold),
-                //       ),
-                //       5.horizontalSpace,
-                //       Text(
-                //         '(${product.reviews!})',
-                //         style:
-                //             theme.textTheme.bodyMedium?.copyWith(fontSize: 16.sp),
-                //       ),
-                //     ],
-                //   ).animate().fade().slideX(
-                //         duration: const Duration(milliseconds: 300),
-                //         begin: -1,
-                //         curve: Curves.easeInSine,
-                //       ),
-                // ),
-                // 20.verticalSpace,
+               normalPrice(theme),
+                    
+          
                 20.verticalSpace,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -299,17 +268,10 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                     return CustomButton(
                       text: Strings.addToCart.tr,
                       onPressed: () => controller.onAddToCartPressed(product),
-                      disabled: controller.qtyController.text.isEmpty ||
-                          controller.qtyController.text == "0",
-                      fontSize: 16.sp,
+                     
+                     
                       radius: 12.r,
-                      verticalPadding: 12.h,
-                      hasShadow: true,
-                      backgroundColor: LightThemeColors.primaryColor,
-                      shadowColor: theme.primaryColor,
-                      shadowOpacity: 0.3,
-                      shadowBlurRadius: 4,
-                      shadowSpreadRadius: 0,
+                   
                     ).animate().fade().slideY(
                           duration: const Duration(milliseconds: 300),
                           begin: 1,
@@ -321,47 +283,6 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget promoPrice(ThemeData theme) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: Row(
-        children: [
-          Text(
-            Strings.prix.tr,
-            style: theme.textTheme.bodyMedium
-                ?.copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
-          ).animate().fade().slideX(
-                duration: const Duration(milliseconds: 300),
-                begin: -1,
-                curve: Curves.easeInSine,
-              ),
-          const Spacer(),
-          Text('${product.promoPrice} DZD',
-                  style: theme.textTheme.displayMedium)
-              .animate()
-              .fade()
-              .slideY(
-                duration: const Duration(milliseconds: 200),
-                begin: 2,
-                curve: Curves.easeInSine,
-              ),
-          20.horizontalSpace,
-          Text(
-            '${product.price.toString()} DZD',
-            style: theme.textTheme.displayMedium!.copyWith(
-                decoration: TextDecoration.lineThrough,
-                fontWeight: FontWeight.w200,
-                color: Colors.blueGrey),
-          ).animate().fade().slideY(
-                duration: const Duration(milliseconds: 200),
-                begin: 1,
-                curve: Curves.easeInSine,
-              ),
-        ],
       ),
     );
   }
