@@ -34,15 +34,17 @@ class ProductItem extends StatelessWidget {
                 // height: 200.h,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(25.r),
-                  child: Image.network(
-                    product.images!.first,
-                    height: 200.h,
-                    fit: BoxFit.cover,
-                  ).animate().slideX(
-                        duration: const Duration(milliseconds: 200),
-                        begin: 1,
-                        curve: Curves.easeInSine,
-                      ),
+                  child: product.images == null
+                      ? Text("data")
+                      : Image.network(
+                          product.images!.first,
+                          height: 200.h,
+                          fit: BoxFit.cover,
+                        ).animate().slideX(
+                            duration: const Duration(milliseconds: 200),
+                            begin: 1,
+                            curve: Curves.easeInSine,
+                          ),
                 ),
               ),
               /* Positioned(
